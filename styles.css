@@ -1,0 +1,22 @@
+body {
+    background: black;
+}
+#chessboard {
+    margin: auto;
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.squareE {
+    background-color: rgb(181, 136, 99);
+    width: 12.5%;
+    width: 12.5%;
+    cursor: pointer;
+}
+.squareO {
+    background-color: rgb(240, 217, 181);
+    width: 12.5%;
+    width: 12.5%;
+    cursor: pointer;
+}
