@@ -14,6 +14,7 @@ function drawChessboard() {
         }
         square.addEventListener('click', (e) => {
             //console.log(e.target.id)
+            checkSquare(e.target.id)
             setTarget(squares)
         })
         document.querySelector('#chessboard').appendChild(square)
@@ -31,6 +32,10 @@ function drawChessboard() {
 
 function setTarget(squares) {
     document.querySelector('#targetLabel').textContent = squares[Math.floor(Math.random() *64 +1)]
+}
+
+function checkSquare(target) {
+
 }
 
 const coordinates = drawChessboard()
