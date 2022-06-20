@@ -1,9 +1,12 @@
-let currentTime = 30;
-let countDownTimerId = null;
+let gameTime = 30
+let timer
+let score = 0
+let targetSquare = 0
+let selectedSquare = 0
 
 function drawChessboard() {
-    let squares = {}                 //coordinates!!!
-    let v = 0                       //zmienna pomocnicza do kolorowania pól
+    let squares = {}                        //coordinates!!!
+    let v = 0                              //zmienna pomocnicza do kolorowania pól
     let squareLetter = 'A'
     let squareNumber = 8
     for(let i=1; i<=64; i++) {
@@ -16,8 +19,8 @@ function drawChessboard() {
             square.classList.add('squareO')
         }
         square.addEventListener('click', (e) => {
-            //console.log(e.target.id)
-            checkSquare(e.target.id)
+            selectedSquare = e.target.id
+            checkSquare(targetSquare, selectedSquare)
             setTarget(squares)
         })
         document.querySelector('#chessboard').appendChild(square)
@@ -34,25 +37,42 @@ function drawChessboard() {
 }
 
 function setTarget(squares) {
-    document.querySelector('#targetLabel').textContent = squares[Math.floor(Math.random() *64 +1)]
+    targetSquare = Math.floor(Math.random() *64 +1)
+    document.querySelector('#targetLabel').textContent = squares[targetSquare]
 }
 
-function checkSquare(target) {
+function checkSquare(targetSquare, selectedSquare) {
+    if(targetSquare == selectedSquare){
+        score += 1
+        console.log('correct')
+    }
 }
 
-function countDown(){
-    currentTime--
-    document.querySelector('#time-left').textContent = currentTime;
+function countDown(currentTime){
+    return new Promise((resolve, reject) => {
+        timer = setInterval(function(){
+            currentTime--
+            document.querySelector('#time-left').textContent = currentTime
+            if(currentTime == 25) {
+                clearInterval(timer)
+                resolve(score)
+            }
+        }, 1000)
+    })
 }
 
 function game(){
-    countDownTimerId = setInterval(countDown, 1000);
+    setTarget(coordinates)
+    countDown(gameTime).then((score) => {
+        console.log(score)
+    })
 }
 
 const coordinates = drawChessboard()
-setTarget(coordinates)
+let startButton = document.querySelector('#start')
+startButton.addEventListener('click', game)
 
-document.querySelector('#start').addEventListener('click', game)
+
 
 //for(j = 1; j<=500; j++) {
 //    let f = coordinates[Math.floor(Math.random() *64 +1)]
