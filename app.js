@@ -3,6 +3,7 @@ let timer
 let score = 0
 let targetSquare = 0
 let selectedSquare = 0
+let isGameRunning = false
 
 function drawChessboard() {
     let squares = {}                        //coordinates!!!
@@ -19,9 +20,11 @@ function drawChessboard() {
             square.classList.add('squareO')
         }
         square.addEventListener('click', (e) => {
-            selectedSquare = e.target.id
-            checkSquare(targetSquare, selectedSquare)
-            setTarget(squares)
+            if(isGameRunning){
+                selectedSquare = e.target.id
+                checkSquare(targetSquare, selectedSquare)
+                setTarget(squares)
+            }   
         })
         document.querySelector('#chessboard').appendChild(square)
 
@@ -69,13 +72,16 @@ function countDown(currentTime){
 }
 
 function game(){
+    isGameRunning = true
     score = 0
     setTarget(coordinates)
     countDown(gameTime)
         .then((score) => {
+            isGameRunning = false
             console.log(score)
         })
         .catch((message) => {
+            isGameRunning = false
             console.log(message)
         })
 }
