@@ -1,4 +1,4 @@
-let gameTime = 30
+let gameTime = 10
 let timer
 let score = 0
 let targetSquare = 0
@@ -44,6 +44,7 @@ function setTarget(squares) {
 function checkSquare(targetSquare, selectedSquare) {
     if(targetSquare == selectedSquare){
         score += 1
+        document.querySelector('#score').textContent = score
         console.log('correct')
     }
 }
@@ -53,28 +54,33 @@ function countDown(currentTime){
         timer = setInterval(function(){
             currentTime--
             document.querySelector('#time-left').textContent = currentTime
-            if(currentTime == 25) {
+            if(currentTime == 0) {
                 clearInterval(timer)
                 resolve(score)
             }
         }, 1000)
+        stopButton.addEventListener('click', () => {
+            clearInterval(timer)
+            document.querySelector('#time-left').textContent = gameTime
+            document.querySelector('#score').textContent = 0
+            reject('game has been interrupted')
+        })
     })
 }
 
 function game(){
+    score = 0
     setTarget(coordinates)
-    countDown(gameTime).then((score) => {
-        console.log(score)
-    })
+    countDown(gameTime)
+        .then((score) => {
+            console.log(score)
+        })
+        .catch((message) => {
+            console.log(message)
+        })
 }
 
 const coordinates = drawChessboard()
-let startButton = document.querySelector('#start')
+const startButton = document.querySelector('#start')
+const stopButton = document.querySelector('#stop')
 startButton.addEventListener('click', game)
-
-
-
-//for(j = 1; j<=500; j++) {
-//    let f = coordinates[Math.floor(Math.random() *64 +1)]
-//    if (f == 'H1') {console.log(f)}
-//}
