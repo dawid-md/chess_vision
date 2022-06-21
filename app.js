@@ -78,6 +78,7 @@ function game(){
     countDown(gameTime)
         .then((score) => {
             isGameRunning = false
+            $('#exampleModal').modal('show');
             console.log(score)
         })
         .catch((message) => {
@@ -90,3 +91,4 @@ const coordinates = drawChessboard()
 const startButton = document.querySelector('#start')
 const stopButton = document.querySelector('#stop')
 startButton.addEventListener('click', game)
+
