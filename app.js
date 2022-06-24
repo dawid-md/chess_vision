@@ -78,16 +78,19 @@ function countDown(currentTime){
 
 function game(){
     isGameRunning = true
+    startButton.classList.add('disabled')
     score = 0
     setTarget(coordinates)
     countDown(gameTime)
         .then((score) => {
             isGameRunning = false
+            startButton.classList.remove('disabled')
             $('#exampleModal').modal('show');
             console.log(score)
         })
         .catch((message) => {
             isGameRunning = false
+            startButton.classList.remove('disabled')
             console.log(message)
         })
 }
