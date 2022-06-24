@@ -4,6 +4,7 @@ let score = 0
 let targetSquare = 0
 let selectedSquare = 0
 let isGameRunning = false
+let previousSquare
 
 function drawChessboard() {
     let squares = {}                        //coordinates!!!
@@ -41,6 +42,10 @@ function drawChessboard() {
 
 function setTarget(squares) {
     targetSquare = Math.floor(Math.random() *64 +1)
+    if (targetSquare == previousSquare) {   //zapobiega pojawieniu sie dwa razy z rzedu tego samego pola
+        targetSquare = 65 - targetSquare
+        previousSquare = targetSquare
+    }
     document.querySelector('#targetLabel').textContent = squares[targetSquare]
 }
 
