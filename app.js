@@ -37,6 +37,7 @@ function drawChessboard() {
             squareNumber -= 1                                           //dekrementacja, numeracja wierszy szachownicy od góry do dołu
         }
     }
+    document.getElementById('28').innerHTML = `<p id="targetLabel">A1</p>`
     return squares
 }
 

@@ -2,9 +2,13 @@ body {
     background: black;
 }
 #targetLabel {
-    color: bisque;
-    margin: auto;
-    text-align: center;
+    position: relative;
+    top: -22px;
+    left: -22px;
+    color: rgb(238, 238, 238);
+    font-size:150px;
+    -webkit-text-stroke: 1px black;
+    opacity: 0.7;
 }
 #chessboard {
     margin: auto;
