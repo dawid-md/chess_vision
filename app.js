@@ -1,7 +1,10 @@
 let gameTime = 60
 let timer
 let score = 0
+let randomSquares = []
+let generatedSquare = 0
 let targetSquare = 0
+let targetSquareNext = 0
 let selectedSquare = 0
 let isGameRunning = false
 let previousSquare = 0
@@ -38,6 +41,7 @@ function drawChessboard() {
         }
     }
     document.getElementById('28').innerHTML = `<p id="targetLabel">A1</p>`
+    document.getElementById('30').innerHTML = `<p id="targetLabelNext">A2</p>`
     return squares
 }
 
@@ -97,8 +101,26 @@ function game(){
         })
 }
 
+function generateRandomSquares(){
+    randomSquares.push(Math.floor(Math.random() *64 +1))
+    for(j = 1; j<500; j++){
+        generatedSquare = Math.floor(Math.random() *64 +1)
+        if(generatedSquare != randomSquares[randomSquares.length - 1]){
+            randomSquares.push(generatedSquare)
+        }
+        else{
+            while(generatedSquare == randomSquares[randomSquares.length - 1]){
+                console.log('ups')
+                generatedSquare = Math.floor(Math.random() *64 +1)
+            }
+            randomSquares.push(generatedSquare)
+        }
+    }
+}
+
 const coordinates = drawChessboard()
 const startButton = document.querySelector('#start')
 const stopButton = document.querySelector('#stop')
 startButton.addEventListener('click', game)
+generateRandomSquares()
 
