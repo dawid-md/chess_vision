@@ -3,11 +3,11 @@ let timer
 let score = 0
 let randomSquares = []
 let generatedSquare = 0
-let targetSquare = 0
-let targetSquareNext = 0
+let targetSquare;
+let targetSquareNext;
 let selectedSquare = 0
 let isGameRunning = false
-let previousSquare = 0
+//let previousSquare = 0
 
 function drawChessboard() {
     let squares = {}                        //coordinates!!!
@@ -40,19 +40,22 @@ function drawChessboard() {
             squareNumber -= 1                                           //dekrementacja, numeracja wierszy szachownicy od góry do dołu
         }
     }
-    document.getElementById('28').innerHTML = `<p id="targetLabel">A1</p>`
-    document.getElementById('30').innerHTML = `<p id="targetLabelNext">A2</p>`
+    document.getElementById('28').innerHTML = `<p id="targetLabel">e4</p>`
+    document.getElementById('30').innerHTML = `<p id="targetLabelNext">d4</p>`
     return squares
 }
 
 function setTarget(squares) {
-    targetSquare = Math.floor(Math.random() *64 +1)
-    if (targetSquare == previousSquare) {           //zapobiega pojawieniu sie dwa razy z rzedu tego samego pola
-        console.log(targetSquare)
-        targetSquare = 65 - targetSquare
-    }
-    previousSquare = targetSquare
+    // targetSquare = Math.floor(Math.random() *64 +1)
+    // if (targetSquare == previousSquare) {           //zapobiega pojawieniu sie dwa razy z rzedu tego samego pola
+    //     console.log(targetSquare)
+    //     targetSquare = 65 - targetSquare
+    // }
+    // previousSquare = targetSquare
+    targetSquare = targetSquareNext || randomSquares.shift()
+    targetSquareNext = randomSquares.shift()
     document.querySelector('#targetLabel').textContent = squares[targetSquare]
+    document.querySelector('#targetLabelNext').textContent = squares[targetSquareNext]
 }
 
 function checkSquare(targetSquare, selectedSquare) {
@@ -110,7 +113,6 @@ function generateRandomSquares(){
         }
         else{
             while(generatedSquare == randomSquares[randomSquares.length - 1]){
-                console.log('ups')
                 generatedSquare = Math.floor(Math.random() *64 +1)
             }
             randomSquares.push(generatedSquare)
