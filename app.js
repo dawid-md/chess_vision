@@ -1,4 +1,4 @@
-let gameTime = 60
+let gameTime = 30
 let timer
 let score = 0
 let randomSquares = []
@@ -44,25 +44,14 @@ function drawChessboard() {
             squareNumber -= 1                                           //dekrementacja, numeracja wierszy szachownicy od góry do dołu
         }
     }
-    //document.getElementById('28').innerHTML = `<p id="targetLabel">e4</p>`
-    //document.getElementById('30').innerHTML = `<p id="targetLabelNext">d4</p>`
     return squares
 }
 
 function setTarget(squares) {
-    // targetSquare = Math.floor(Math.random() *64 +1)
-    // if (targetSquare == previousSquare) {           //zapobiega pojawieniu sie dwa razy z rzedu tego samego pola
-    //     console.log(targetSquare)
-    //     targetSquare = 65 - targetSquare
-    // }
-    // previousSquare = targetSquare
     targetSquare = targetSquare2nd || randomSquares.shift()
     targetSquare2nd = targetSquare3rd || randomSquares.shift()
     targetSquare3rd = randomSquares.shift()
-
-    //document.querySelector('#targetLabel').textContent = squares[targetSquare]
-    //document.querySelector('#targetLabelNext').textContent = squares[targetSquare2nd]
-
+    
     if(isGameRunning == false){
     document.querySelector('.main').textContent = squares[targetSquare]
     document.querySelector('.next').textContent = squares[targetSquare2nd]
@@ -70,16 +59,16 @@ function setTarget(squares) {
     }
 
     if(isGameRunning){
-    if(document.querySelector('.moveRight'))      {document.querySelector('.moveRight').className = 'fadeRight'}
-    if(document.querySelector('.appearfromLeft')) {document.querySelector('.appearfromLeft').className = 'moveRight'}
-    if(document.querySelector('.main'))      {document.querySelector('.main').className = 'fadeRight'}
-    if(document.querySelector('.next'))      {document.querySelector('.next').className = 'moveRight'}
-    if(document.querySelector('.waiting'))   {document.querySelector('.waiting').className = 'appearfromLeft'}
+    if(document.querySelector('.moveLeft'))      {document.querySelector('.moveLeft').className = 'fadeLeft'}
+    if(document.querySelector('.appearfromRight')) {document.querySelector('.appearfromRight').className = 'moveLeft'}
+    if(document.querySelector('.main'))      {document.querySelector('.main').className = 'fadeLeft'}
+    if(document.querySelector('.next'))      {document.querySelector('.next').className = 'moveLeft'}
+    if(document.querySelector('.waiting'))   {document.querySelector('.waiting').className = 'appearfromRight'}
     let newBox = document.createElement('div')
     newBox.classList = 'waiting'
     newBox.textContent = squares[targetSquare3rd]
     document.querySelector('#maindiv').appendChild(newBox)      
-    setTimeout(() => {document.querySelector('.fadeRight').remove()}, 200)
+    setTimeout(() => {document.querySelector('.fadeLeft').remove()}, 200)
     }     
 
 }

@@ -1,24 +1,6 @@
 body {
     background: black;
 }
-#targetLabel {
-    position: relative;
-    top: -68px;
-    left: -112px;
-    color: rgb(238, 238, 238);
-    font-size:210px;
-    -webkit-text-stroke: 1px black;
-    opacity: 0.7;
-}
-#targetLabelNext {
-    position: relative;
-    top: 105px;
-    left: 5px;
-    color: rgb(238, 238, 238);
-    font-size:75px;
-    -webkit-text-stroke: 1px black;
-    opacity: 0.7;
-}
 #chessboard {
     margin: auto;
     width: 600px;
@@ -41,89 +23,101 @@ body {
     cursor: pointer;
 }
 
+
+
 .waiting{
     display: inline-block;
-    color: rgb(38, 14, 190);
+    color: rgb(255, 255, 255);
     font-size: 40px;
     width: 50px;
     height: 50px;
     position: absolute;
-    left: 1200px;
-    top: 400px;
+    left: 1300px;
+    top: 560px;
     opacity: 0;
     pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
 }
 .next{
     display: inline-block;
-    color: rgb(21, 64, 255);
-    font-size: 40px;
+    color: rgb(255, 255, 255);
+    font-size: 60px;
     width: 50px;
     height: 50px;
     position: absolute;
-    left: 1100px;
-    top: 560px;
+    left: 1050px;
+    top: 540px;
     pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
+    opacity: 0.9;
 }
 .main{
     display: inline-block;
-    color: rgb(107, 53, 255);
-    font-size: 100px;
+    color: rgb(255, 255, 255);
+    font-size: 180px;
     width: 50px;
     height: 50px;
     position: absolute;
-    left: 800px;
-    top: 400px;
+    left: 790px;
+    top: 380px;
     pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
+    opacity: 0.8;
 }
 
-.appearfromLeft{
+.appearfromRight{
     display: inline-block;
-    color: rgb(48, 21, 200);
+    color: rgb(255, 255, 255);
     width: 50px;
     height: 50px;
     position: absolute;
-    transition: 0.2s;
-    top: 500px;
-    left: 1100px !important;
-    font-size: 40px !important;
-    opacity: 1 !important;
+    transition: 0.1s;
+    left: 1050px !important;
+    top: 540px !important;
+    font-size: 60px !important;
+    opacity: 0.9 !important;
     pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
   }
-.moveRight{
+.moveLeft{
     display: inline-block;
-    color: rgb(255, 30, 0);
-    font-size: 40px;
+    color: rgb(255, 255, 255);
+    font-size: 50px;
     width: 50px;
     height: 50px;
     position: absolute;
-    transition: 0.2s;
-    left: 800px !important;
-    top: 400px;
+    transition: 0.1s;
+    left: 790px !important;
+    top: 380px;
     font-size: 180px !important;
     pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
+    opacity: 0.8;
   }
-.fadeRight{
+.fadeLeft{
     display: inline-block;
-    color: rgb(31, 13, 174);
-    font-size: 100px;
+    color: rgb(255, 255, 255);
+    font-size: 50px;
     width: 50px;
     height: 50px;
     position: absolute;
-    transition: 0.2s;
-    top: 400px;
-    left: 100px !important;
+    transition: 0.1s;
+    top: 480px;
+    left: 450px !important;
     opacity: 0;
     pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
   }
 .closed{
     display: inline-block;
-    color: rgb(197, 11, 92);
+    color: rgb(255, 255, 255);
     font-size: 40px;
     width: 50px;
     height: 50px;
     position: absolute;
-    left: 100px;
+    left: 600px;
     top: 300px;
     opacity: 0;
     pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
   }
