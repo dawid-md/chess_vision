@@ -21,8 +21,8 @@ body {
 }
 #chessboard {
     margin: auto;
-    width: 800px;
-    height: 800px;
+    width: 600px;
+    height: 600px;
     display: flex;
     flex-wrap: wrap;
     resize: both;
@@ -40,3 +40,90 @@ body {
     height: 12.5%;
     cursor: pointer;
 }
+
+.waiting{
+    display: inline-block;
+    color: rgb(38, 14, 190);
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 1200px;
+    top: 400px;
+    opacity: 0;
+    pointer-events:none;
+}
+.next{
+    display: inline-block;
+    color: rgb(21, 64, 255);
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 1100px;
+    top: 560px;
+    pointer-events:none;
+}
+.main{
+    display: inline-block;
+    color: rgb(107, 53, 255);
+    font-size: 100px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 800px;
+    top: 400px;
+    pointer-events:none;
+}
+
+.appearfromLeft{
+    display: inline-block;
+    color: rgb(48, 21, 200);
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    transition: 0.2s;
+    top: 500px;
+    left: 1100px !important;
+    font-size: 40px !important;
+    opacity: 1 !important;
+    pointer-events:none;
+  }
+.moveRight{
+    display: inline-block;
+    color: rgb(255, 30, 0);
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    transition: 0.2s;
+    left: 800px !important;
+    top: 400px;
+    font-size: 180px !important;
+    pointer-events:none;
+  }
+.fadeRight{
+    display: inline-block;
+    color: rgb(31, 13, 174);
+    font-size: 100px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    transition: 0.2s;
+    top: 400px;
+    left: 100px !important;
+    opacity: 0;
+    pointer-events:none;
+  }
+.closed{
+    display: inline-block;
+    color: rgb(197, 11, 92);
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 100px;
+    top: 300px;
+    opacity: 0;
+    pointer-events:none;
+  }
