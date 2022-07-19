@@ -8,21 +8,46 @@
     <!--bootstrap-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!------------->
     <link rel="stylesheet" href="styles.css">
     <script defer src="app.js"></script>
 </head>
-<body>
+<body class="bg-dark">
 
-<div class="container">
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container">
+    <a href="#" class="navbar-brand"><h3>Chess Vision <span class="text-warning"> Trainer</h3></span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Leaderboard</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">About</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container text-white">
     <button type="button" id="start" class="btn btn-primary">Start</button>
     <button type="button" id="stop" class="btn btn-secondary">Stop</button>
 
-    <div id="infoBoard">
-        <h3>Time: </h3><h3 id="time-left">60</h3>
-        <h3>Score: </h3><h3 id="score">0</h3>
+    <div id="infoBoard" class="mt-4">
+        <h4 class="d-inline">Time: </h4><h4 id="time-left" class="d-inline">30</h4>
+        <div></div>
+        <h4 class="d-inline">Score: </h4><h4 id="score" class="d-inline">0</h4>
     </div>
 
     <div id="maindiv">
@@ -32,7 +57,6 @@
 
       <div id="chessboard"></div>
     </div>
-
 </div>
 
 <!-- Modal -->
