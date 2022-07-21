@@ -18,11 +18,10 @@
 
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
   <div class="container">
-    <a href="#" class="navbar-brand"><h3>Chess Vision <span class="text-warning"> Trainer</h3></span></a>
+    <a href="#" class="navbar-brand"><h2>Chess Vision <span class="text-warning"> Trainer</h2></span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navmenu">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
@@ -36,27 +35,46 @@
         </li>
       </ul>
     </div>
-
   </div>
 </nav>
 
 <div class="container text-white">
-    <button type="button" id="start" class="btn btn-primary">Start</button>
-    <button type="button" id="stop" class="btn btn-secondary">Stop</button>
+  <div class="row">
+    <div class="col-3">
 
-    <div id="infoBoard" class="mt-4">
-        <h4 class="d-inline">Time: </h4><h4 id="time-left" class="d-inline">30</h4>
-        <div></div>
-        <h4 class="d-inline">Score: </h4><h4 id="score" class="d-inline">0</h4>
+      <div class="card bg-secondary text-center mb-3">
+        <div class="card-body">
+          <h3 class="card-title">Score</h5>
+          <h4 class="card-text" id="score">0</h4>
+        </div>
+      </div>
+
+      <div class="card bg-secondary text-center mb-5">
+        <div class="card-body">
+          <h3 class="card-title">Time</h5>
+          <h4 class="card-text" id="time-left">30</h4>
+        </div>
+      </div>
+
+      <button type="button" id="start" class="btn btn-primary btn-lg">Start</button>
+      <button type="button" id="stop" class="btn btn-secondary btn-lg">Stop</button>
+
+      <!--<div id="infoBoard" class="mt-4">
+          <h4 class="d-inline">Time: </h4><h4 id="time-left" class="d-inline">30</h4>
+          <div></div>
+          <h4 class="d-inline">Score: </h4><h4 id="score" class="d-inline">0</h4>
+      </div>-->
     </div>
 
-    <div id="maindiv">
-      <div class="waiting">F4</div>
-      <div class="next">D4</div>
-      <div class="main">E4</div>
-
-      <div id="chessboard"></div>
+    <div class="col-6">
+      <div id="maindiv">
+        <div class="waiting">F4</div>
+        <div class="next">D4</div>
+        <div class="main">E4</div>
+        <div id="chessboard"></div>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Modal -->
@@ -72,7 +90,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
