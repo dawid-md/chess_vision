@@ -1,5 +1,5 @@
 .bg-secondary {
-    background-color: #282e34 !important;
+    background-color: #292E33 !important;
 }
 
 #chessboard {
@@ -120,3 +120,41 @@
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
   }
+
+
+.maiNew{
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    font-size: 180px;
+    position: relative;
+    left: -40px;
+    top: -10px;
+    pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
+    opacity: 0.8;
+}
+
+.maiNext{
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    font-size: 65px;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
+    opacity: 0.9;
+}
+
+.waitingNext{
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    font-size: 65px;
+    position: relative;
+    left: 100px;
+    top: 10px;
+    opacity: 1;
+    pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
+}
+

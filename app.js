@@ -44,6 +44,23 @@ function drawChessboard() {
             squareNumber -= 1                                           //dekrementacja, numeracja wierszy szachownicy od góry do dołu
         }
     }
+
+    let mDiv = document.createElement('div')
+    mDiv.classList = 'maiNew'
+    mDiv.innerText = 'H8'
+    document.getElementById('19').appendChild(mDiv)
+
+    let nDiv = document.createElement('div')
+    nDiv.classList = 'maiNext'
+    nDiv.innerText = 'H7'
+    document.getElementById('38').appendChild(nDiv)
+
+    let wNew = document.createElement('div')
+    wNew.classList = 'waitingNext'
+    wNew.innerText = 'H6'
+    document.getElementById('40').appendChild(wNew)
+
+
     return squares
 }
 
