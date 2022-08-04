@@ -45,22 +45,6 @@ function drawChessboard() {
         }
     }
 
-    let mDiv = document.createElement('div')
-    mDiv.classList = 'maiNew'
-    mDiv.innerText = 'H8'
-    document.getElementById('19').appendChild(mDiv)
-
-    let nDiv = document.createElement('div')
-    nDiv.classList = 'maiNext'
-    nDiv.innerText = 'H7'
-    document.getElementById('38').appendChild(nDiv)
-
-    let wNew = document.createElement('div')
-    wNew.classList = 'waitingNext'
-    wNew.innerText = 'H6'
-    document.getElementById('40').appendChild(wNew)
-
-
     return squares
 }
 
@@ -81,6 +65,7 @@ function setTarget(squares) {
     if(document.querySelector('.main'))      {document.querySelector('.main').className = 'fadeLeft'}
     if(document.querySelector('.next'))      {document.querySelector('.next').className = 'moveLeft'}
     if(document.querySelector('.waiting'))   {document.querySelector('.waiting').className = 'appearfromRight'}
+    
     let newBox = document.createElement('div')
     newBox.classList = 'waiting'
     newBox.textContent = squares[targetSquare3rd]

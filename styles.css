@@ -2,6 +2,10 @@
     background-color: #292E33 !important;
 }
 
+#maindiv{
+    position: relative; /*gives childs possibility to position absolute relatively to parent, not to browser*/
+}
+
 #chessboard {
     margin: auto;
     width: 600px;
@@ -9,8 +13,9 @@
     display: flex;
     flex-wrap: wrap;
     resize: both;
-    overflow: auto;
+    overflow: visible;
 }
+
 .squareE {
     background-color: rgb(181, 136, 99);
     width: 12.5%;
@@ -25,136 +30,66 @@
 }
 
 .waiting{
-    display: inline-block;
     color: rgb(255, 255, 255);
-    font-size: 40px;
-    width: 50px;
-    height: 50px;
+    font-size: 60px;
     position: absolute;
-    left: 1300px;
-    top: 560px;
+    left: 105%;
+    top: 54%;
     opacity: 0;
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
 }
 .next{
-    display: inline-block;
     color: rgb(255, 255, 255);
     font-size: 60px;
-    width: 50px;
-    height: 50px;
     position: absolute;
-    left: 1050px;
-    top: 540px;
+    left: 62%;
+    top: 54%;
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
     opacity: 0.9;
 }
 .main{
-    display: inline-block;
     color: rgb(255, 255, 255);
     font-size: 180px;
-    width: 50px;
-    height: 50px;
     position: absolute;
-    left: 790px;
-    top: 380px;
+    left: 20%;
+    top: 23%;
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
     opacity: 0.8;
 }
 
 .appearfromRight{
-    display: inline-block;
     color: rgb(255, 255, 255);
-    width: 50px;
-    height: 50px;
     position: absolute;
     transition: 0.1s;
-    left: 1050px !important;
-    top: 540px !important;
-    font-size: 60px !important;
-    opacity: 0.9 !important;
+    left: 62%;
+    top: 54%;
+    font-size: 60px;
+    opacity: 0.9;
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
   }
 .moveLeft{
-    display: inline-block;
     color: rgb(255, 255, 255);
-    font-size: 50px;
-    width: 50px;
-    height: 50px;
+    font-size: 180px;
     position: absolute;
     transition: 0.1s;
-    left: 790px !important;
-    top: 380px;
-    font-size: 180px !important;
+    left: 20%;
+    top: 23%;
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
     opacity: 0.8;
   }
 .fadeLeft{
-    display: inline-block;
     color: rgb(255, 255, 255);
-    font-size: 50px;
-    width: 50px;
-    height: 50px;
+    font-size: 110px;
     position: absolute;
     transition: 0.1s;
-    top: 480px;
-    left: 450px !important;
+    left: -20%;
+    top: 31%;
     opacity: 0;
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
   }
-.closed{
-    display: inline-block;
-    color: rgb(255, 255, 255);
-    font-size: 40px;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    left: 600px;
-    top: 300px;
-    opacity: 0;
-    pointer-events:none;
-    text-shadow: 0px 0px 7px #000000;
-  }
-
-
-.maiNew{
-    display: inline-block;
-    color: rgb(255, 255, 255);
-    font-size: 180px;
-    position: relative;
-    left: -40px;
-    top: -10px;
-    pointer-events:none;
-    text-shadow: 0px 0px 7px #000000;
-    opacity: 0.8;
-}
-
-.maiNext{
-    display: inline-block;
-    color: rgb(255, 255, 255);
-    font-size: 65px;
-    position: relative;
-    left: 10px;
-    top: 10px;
-    pointer-events:none;
-    text-shadow: 0px 0px 7px #000000;
-    opacity: 0.9;
-}
-
-.waitingNext{
-    display: inline-block;
-    color: rgb(255, 255, 255);
-    font-size: 65px;
-    position: relative;
-    left: 100px;
-    top: 10px;
-    opacity: 1;
-    pointer-events:none;
-    text-shadow: 0px 0px 7px #000000;
-}
-
