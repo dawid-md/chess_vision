@@ -86,16 +86,17 @@ function checkSquare(targetSquare, selectedSquare) {
 function countDown(currentTime){
     return new Promise((resolve, reject) => {
         timer = setInterval(function(){
-            currentTime--
-            document.querySelector('#time-left').textContent = currentTime
+            //currentTime--
+            currentTime -= 0.1
+            document.querySelector('#time-left').textContent = currentTime.toFixed(1)
             if(currentTime == 0) {
                 clearInterval(timer)
                 resolve(score)
             }
-        }, 1000)
+        }, 100)
         stopButton.addEventListener('click', () => {
             clearInterval(timer)
-            document.querySelector('#time-left').textContent = gameTime
+            document.querySelector('#time-left').textContent = gameTime.toFixed(1)
             document.querySelector('#score').textContent = 0
             reject('game has been interrupted')
         })

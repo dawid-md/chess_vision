@@ -93,3 +93,12 @@
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
   }
+
+  @font-face {
+    font-family: 'digital-7';
+    src: url('C:/Users/Dawid/Desktop/chess_vision/font/digital-7.ttf');
+  }
+
+  #time-left{
+    font-family: digital-7;
+  }
