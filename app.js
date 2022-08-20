@@ -89,7 +89,7 @@ function countDown(currentTime){
             //currentTime--
             currentTime -= 0.1
             document.querySelector('#time-left').textContent = currentTime.toFixed(1)
-            if(currentTime == 0) {
+            if(currentTime < 0) {
                 clearInterval(timer)
                 resolve(score)
             }
