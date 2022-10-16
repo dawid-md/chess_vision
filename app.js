@@ -99,6 +99,7 @@ function countDown(currentTime){
             document.querySelector('#time-left').textContent = gameTime.toFixed(1)
             document.querySelector('#score').textContent = 0
             reject('game has been interrupted')
+            startButton.classList.remove('disabled')
         })
     })
 }
@@ -106,8 +107,8 @@ function countDown(currentTime){
 function game(){
     startButton.classList.add('disabled')
     score = 0
-    setTarget(coordinates)
     isGameRunning = true
+    setTarget(coordinates)
     countDown(gameTime)
         .then((score) => {
             isGameRunning = false
