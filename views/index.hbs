@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Vision</title>
+    <link rel="shortcut icon" href="#" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
+</head>
+<body class="bg-dark">
+
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container">
+    <a href="#" class="navbar-brand"><h2>Chess Vision <span class="text-warning"> Trainer</h2></span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Leaderboard</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container text-white">
+  <div class="row">
+    <div class="col-3">
+
+      <div class="card bg-secondary text-center mb-3">
+        <div class="card-body">
+          <h3 class="card-title">Score</h5>
+          <h4 class="card-text" id="score">0</h4>
+        </div>
+      </div>
+
+      <div class="card bg-secondary text-center mb-5">
+        <div class="card-body">
+          <h3 class="card-title">Time</h5>
+          <h1 class="card-text" id="time-left">30.0</h1>
+        </div>
+      </div>
+
+      <button type="button" id="start" class="btn btn-primary btn-lg">Start</button>
+      <button type="button" id="stop" class="btn btn-secondary btn-lg">Stop</button>
+      
+    </div>
+
+    <div class="col-6">
+      <div id="maindiv">
+        <div class="waiting">F4</div>
+        <div class="next">D4</div>
+        <div class="main">E4</div>
+        <div id="chessboard"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Your score</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+</body>
+</html>
