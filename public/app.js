@@ -1,4 +1,4 @@
-let gameTime = 3
+let gameTime = 300
 let timer
 let score = 0
 let randomSquares = []
@@ -53,18 +53,18 @@ function setTarget(squares) {
     targetSquare2nd = targetSquare3rd || randomSquares.shift()
     targetSquare3rd = randomSquares.shift()
     
-    if(isGameRunning == false){
-    document.querySelector('.main').textContent = squares[targetSquare]
-    document.querySelector('.next').textContent = squares[targetSquare2nd]
-    document.querySelector('.waiting').textContent = squares[targetSquare3rd]
-    }
+    // if(isGameRunning == false){
+    // document.querySelector('.main').textContent = squares[targetSquare]
+    // document.querySelector('.next').textContent = squares[targetSquare2nd]
+    // document.querySelector('.waiting').textContent = squares[targetSquare3rd]
+    // }
 
     if(isGameRunning){
-    if(document.querySelector('.moveLeft'))      {document.querySelector('.moveLeft').className = 'fadeLeft'}
-    if(document.querySelector('.appearfromRight')) {document.querySelector('.appearfromRight').className = 'moveLeft'}
-    if(document.querySelector('.main'))      {document.querySelector('.main').className = 'fadeLeft'}
-    if(document.querySelector('.next'))      {document.querySelector('.next').className = 'moveLeft'}
-    if(document.querySelector('.waiting'))   {document.querySelector('.waiting').className = 'appearfromRight'}
+    if(document.querySelector('.moveLeft'))         {document.querySelector('.moveLeft').className = 'fadeLeft'}
+    if(document.querySelector('.appearfromRight'))  {document.querySelector('.appearfromRight').className = 'moveLeft'}
+    if(document.querySelector('.main'))             {document.querySelector('.main').className = 'fadeLeft'}
+    if(document.querySelector('.next'))             {document.querySelector('.next').className = 'moveLeft'}
+    if(document.querySelector('.waiting'))          {document.querySelector('.waiting').className = 'appearfromRight'}
     
     let newBox = document.createElement('div')
     newBox.classList = 'waiting'
@@ -155,7 +155,7 @@ saveButton.addEventListener('click', () => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name: userLabel.value, score: score, date: new Date()})
+        body: JSON.stringify({ name: userLabel.value, score: score, date: new Date() })
     }).then(function(response) {
         if(response.ok) {
             console.log('database updated');
@@ -167,4 +167,6 @@ saveButton.addEventListener('click', () => {
 })
 
 generateRandomSquares()
+document.querySelector('.next').textContent = coordinates[randomSquares[0]]
+document.querySelector('.waiting').textContent = coordinates[randomSquares[1]]
 
