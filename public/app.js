@@ -1,4 +1,4 @@
-let gameTime = 30
+let gameTime = 3
 let timer
 let score = 0
 let randomSquares = []
@@ -113,7 +113,7 @@ function game(){
             isGameRunning = false
             startButton.classList.remove('disabled')
             $('#exampleModal').modal('show');
-            console.log(score)
+            document.getElementById('#userscore').textContent = score
         })
         .catch((message) => {
             isGameRunning = false
@@ -141,6 +141,30 @@ function generateRandomSquares(){
 const coordinates = drawChessboard()
 const startButton = document.querySelector('#start')
 const stopButton = document.querySelector('#stop')
+const saveButton = document.querySelector('#savescore')
+const userLabel = document.getElementById('#username')
+const scoreLabel = document.querySelector('#userscore')
+
 startButton.addEventListener('click', game)
+
+saveButton.addEventListener('click', () => {
+
+    fetch('/add', {
+        method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: userLabel.value, score: score, date: new Date()})
+    }).then(function(response) {
+        if(response.ok) {
+            console.log('database updated');
+            return;
+        }
+        throw new Error('Request failed.');
+        });
+
+})
+
 generateRandomSquares()
 

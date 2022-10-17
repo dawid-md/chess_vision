@@ -21,12 +21,14 @@ router.get('/results', async (req, res) => {
 })
 
 router.post('/add', async (req, res) => {
-    let newNumber = new digitSchema({
-        value: req.body.value
+    let newScore = new scoreShema({
+        name: req.body.name,
+        score: req.body.score,
+        date: req.body.date
     })
     try {
-        let number = await newNumber.save()
-        res.status(201).json(number)
+        let score = await newScore.save()
+        res.status(201).json(score)
     } catch (error) {
         res.status(400).json({ message: error.message })
     }
