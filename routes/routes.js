@@ -24,7 +24,8 @@ router.post('/add', async (req, res) => {
     let newScore = new scoreShema({
         name: req.body.name,
         score: req.body.score,
-        date: req.body.date
+        date: req.body.date,
+        timer: req.body.timer
     })
     try {
         let score = await newScore.save()

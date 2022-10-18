@@ -12,6 +12,10 @@ const scoreSh = new mongoose.Schema({
     date: {
         type: Date,
         required: true
+    },
+    timer: {
+        type: Number,
+        required: true
     }
 })
 

@@ -1,4 +1,4 @@
-let gameTime = 300
+let gameTime = 10
 let timer
 let score = 0
 let randomSquares = []
@@ -53,12 +53,6 @@ function setTarget(squares) {
     targetSquare2nd = targetSquare3rd || randomSquares.shift()
     targetSquare3rd = randomSquares.shift()
     
-    // if(isGameRunning == false){
-    // document.querySelector('.main').textContent = squares[targetSquare]
-    // document.querySelector('.next').textContent = squares[targetSquare2nd]
-    // document.querySelector('.waiting').textContent = squares[targetSquare3rd]
-    // }
-
     if(isGameRunning){
     if(document.querySelector('.moveLeft'))         {document.querySelector('.moveLeft').className = 'fadeLeft'}
     if(document.querySelector('.appearfromRight'))  {document.querySelector('.appearfromRight').className = 'moveLeft'}
@@ -88,7 +82,8 @@ function countDown(currentTime){
         timer = setInterval(function(){
             currentTime -= 0.1
             document.querySelector('#time-left').textContent = currentTime.toFixed(1)
-            if(currentTime < 0) {
+            if(currentTime <= 0) {
+                document.querySelector('#time-left').textContent = 0
                 clearInterval(timer)
                 resolve(score)
             }
@@ -124,7 +119,7 @@ function game(){
 
 function generateRandomSquares(){
     randomSquares.push(Math.floor(Math.random() *64 +1))
-    for(j = 1; j<500; j++){
+    for(let j = 1; j<500; j++){
         generatedSquare = Math.floor(Math.random() *64 +1)
         if(generatedSquare != randomSquares[randomSquares.length - 1]){
             randomSquares.push(generatedSquare)
@@ -148,14 +143,13 @@ const scoreLabel = document.querySelector('#userscore')
 startButton.addEventListener('click', game)
 
 saveButton.addEventListener('click', () => {
-
     fetch('/add', {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name: userLabel.value, score: score, date: new Date() })
+        body: JSON.stringify({ name: userLabel.value, score: score, date: new Date(), timer: gameTime })
     }).then(function(response) {
         if(response.ok) {
             console.log('database updated');
@@ -163,7 +157,6 @@ saveButton.addEventListener('click', () => {
         }
         throw new Error('Request failed.');
         });
-
 })
 
 generateRandomSquares()
