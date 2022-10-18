@@ -1,4 +1,4 @@
-let gameTime = 10
+let gameTime = 3
 let timer
 let score = 0
 let randomSquares = []
