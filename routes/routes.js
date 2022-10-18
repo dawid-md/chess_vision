@@ -14,7 +14,8 @@ router.get('/', (req, res) => {
 router.get('/results', async (req, res) => {
     try{
         let results = await scoreShema.find()
-        res.render('board.hbs', { userData: JSON.stringify(results) })
+        //res.render('board.hbs', { userData: JSON.stringify(results) })
+        res.send(JSON.stringify(results))
     } catch(err){
         res.status(500).json({message: err.message})
     }

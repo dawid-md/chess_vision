@@ -72,8 +72,8 @@
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Save results Modal -->
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -86,6 +86,36 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-light btn-lg" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary btn-lg" id="savescore" data-bs-dismiss="modal">Save</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="resultModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="resultModalLabel">Leaderboard</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <table class="table" id="leaderboard">
+            <thead>
+              <tr class="table-dark">
+                <th scope="col">#</th>
+                <th scope="col">Player</th>
+                <th scope="col">Score</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+          </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light btn-lg" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

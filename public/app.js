@@ -159,7 +159,43 @@ saveButton.addEventListener('click', () => {
         });
 })
 
+document.querySelectorAll('.nav-link')[1].addEventListener('click', () => { 
+
+    document.getElementById("tableBody").innerHTML = "";
+
+    fetch('/results', {method: 'GET'})
+        .then(function(response) {
+            if(response.ok) {
+                return response.json();
+            }
+            throw new Error('Request data failed.');
+        })
+        .then(function(data) {
+            let users = data 
+            users?.sort((a, b) => (a.score > b.score ? -1 : 1))
+            users.forEach(user => {
+                fillTable(user)
+            })
+        })
+    
+    function fillTable(user) {
+        let table = document.getElementById("tableBody");
+        let row = table.insertRow(-1);
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+        let cell4 = row.insertCell(3);
+
+        cell1.innerHTML = document.getElementById('leaderboard').rows.length - 1
+        cell2.innerHTML = user['name']
+        cell3.innerHTML = user['score']
+        cell4.innerHTML = (user['date'].toString()).substring(0, 10);
+    }
+    
+    
+    $('#resultModal').modal('show') 
+})
+
 generateRandomSquares()
 document.querySelector('.next').textContent = coordinates[randomSquares[0]]
 document.querySelector('.waiting').textContent = coordinates[randomSquares[1]]
-
