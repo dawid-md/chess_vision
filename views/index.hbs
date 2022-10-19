@@ -52,7 +52,7 @@
       <div class="card bg-secondary text-center mb-5">
         <div class="card-body">
           <h3 class="card-title">Time</h5>
-          <h1 class="card-text" id="time-left">10.0</h1>
+          <h1 class="card-text" id="time-left">30.0</h1>
         </div>
       </div>
 
@@ -67,6 +67,12 @@
         <div class="next">D4</div>
         <div class="main">E4</div>
         <div id="chessboard"></div>
+      </div>
+    </div>
+
+    <div class="col-6 mt-3 mx-auto">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
   </div>
@@ -91,11 +97,34 @@
     </div>
 </div>
 
-<div class="modal fade" id="resultModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="resultModalLabel">Leaderboard</h4>
+          {{!-- <h3 class="modal-title" id="resultModalLabel">Leaderboard</h3> --}}
+
+<div class="btn-group" role="group" aria-label="1">
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+  <label class="btn btn-outline-primary" for="btnradio1">60s</label>
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btnradio2">30s</label>
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btnradio3">15s</label>
+</div>
+
+<div class="btn-group ms-5" role="group" aria-label="2">
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" checked>
+  <label class="btn btn-outline-primary" for="btnradio4">Daily</label>
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btnradio5">Weekly</label>
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btnradio6">All</label>
+</div>
+
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

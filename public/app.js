@@ -1,4 +1,4 @@
-let gameTime = 3
+let gameTime = 30
 let timer
 let score = 0
 let randomSquares = []
@@ -78,10 +78,12 @@ function checkSquare(targetSquare, selectedSquare) {
 }
 
 function countDown(currentTime){
+    let barMax = currentTime
     return new Promise((resolve, reject) => {
         timer = setInterval(function(){
             currentTime -= 0.1
             document.querySelector('#time-left').textContent = currentTime.toFixed(1)
+            document.querySelector('.progress-bar').style.width = (barMax - currentTime)/barMax*100 + '%'
             if(currentTime <= 0) {
                 document.querySelector('#time-left').textContent = 0
                 clearInterval(timer)
