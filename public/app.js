@@ -94,6 +94,7 @@ function countDown(currentTime){
             clearInterval(timer)
             document.querySelector('#time-left').textContent = gameTime.toFixed(1)
             document.querySelector('#score').textContent = 0
+            document.querySelector('.progress-bar').style.width = "0%"
             reject('game has been interrupted')
             startButton.classList.remove('disabled')
         })
