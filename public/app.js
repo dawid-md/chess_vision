@@ -9,10 +9,6 @@ let targetSquare3rd;
 let selectedSquare = 0
 let isGameRunning = false
 
-let mainbox = document.querySelector('.main')
-let nextbox = document.querySelector('.next')
-let waitingbox = document.querySelector('.waiting')
-
 function drawChessboard() {
     let squares = {}                        //coordinates!!!
     let v = 0                              //zmienna pomocnicza do kolorowania pól
@@ -203,11 +199,19 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
     $('#resultModal').modal('show') 
 })
 
+
+document.querySelector("[id='18']").innerHTML = `<p class="main">F4</p>`
+document.querySelector("[id='38']").innerHTML = `<p class="next">F8</p>`
+
+
+
+document.querySelector('#chessboard').addEventListener('click', () => {
+    console.log('click');
+    document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
+    //document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
+})
+
+
 generateRandomSquares()
 document.querySelector('.next').textContent = coordinates[randomSquares[0]]
 document.querySelector('.waiting').textContent = coordinates[randomSquares[1]]
-
-document.querySelector('#chessboard').addEventListener('click', () => {
-    console.log('lele');
-    document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
-})
