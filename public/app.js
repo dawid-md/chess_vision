@@ -75,6 +75,10 @@ function checkSquare(targetSquare, selectedSquare) {
         document.querySelector('#score').textContent = score
         console.log('correct')
     }
+    else {
+        document.querySelector('.moveLeft').style.color = "red"
+        document.querySelector('.moveLeft').style.opacity = 0.1
+    }
 }
 
 function countDown(currentTime){
@@ -202,3 +206,8 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
 generateRandomSquares()
 document.querySelector('.next').textContent = coordinates[randomSquares[0]]
 document.querySelector('.waiting').textContent = coordinates[randomSquares[1]]
+
+document.querySelector('#chessboard').addEventListener('click', () => {
+    console.log('lele');
+    document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
+})
