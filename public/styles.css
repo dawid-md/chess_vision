@@ -5,6 +5,7 @@
 #maindiv{
     position: relative; /*gives childs possibility to position absolute relatively to parent, not to browser*/
     aspect-ratio:1/1;
+    align-items: center;
     /*border: 2px solid red;*/
 }
 
@@ -49,9 +50,9 @@
     text-shadow: 0px 0px 7px #000000;
     opacity: 0.9;
     text-align: left;
-    position: relative;
-    left: -3%;
-    top: 30%;
+    position: absolute;
+    left: 62%;
+    top: 54%;
 }
 .main{
     color: rgb(255, 255, 255);
@@ -60,8 +61,9 @@
     text-shadow: 0px 0px 7px #000000;
     opacity: 0.8;
     text-align: left;
-    position: relative;
-    left: 60%;
+    position: absolute;
+    left: 20%;
+    top: 23%;
 }
 .appearfromRight{
     color: rgb(255, 255, 255);
@@ -74,23 +76,13 @@
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
   }
-/*.moveLeft{
-    color: rgb(255, 255, 255);
-    font-size: 180px;
-    position: absolute;
-    transition: 0.1s;
-    left: 20%;
-    top: 23%;
-    pointer-events:none;
-    text-shadow: 0px 0px 7px #000000;
-    opacity: 0.8;
-  }*/
   .moveLeft{
     color: rgb(255, 255, 255);
     font-size: 180px;
     text-align: left;
-    position: relative;
-    left: 60%;
+    position: absolute;
+    left: 20%;
+    top: 23%;
     transition: 0.1s;
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
@@ -139,4 +131,15 @@
     text-shadow: 0px 0px 7px #000000;
     opacity: 0.9;
 }
+.moveLeft{
+    color: rgb(255, 255, 255);
+    font-size: 180px;
+    position: absolute;
+    transition: 0.1s;
+    left: 20%;
+    top: 23%;
+    pointer-events:none;
+    text-shadow: 0px 0px 7px #000000;
+    opacity: 0.8;
+  }
 */

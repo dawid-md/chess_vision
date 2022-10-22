@@ -56,7 +56,7 @@ function setTarget(squares) {
     if(document.querySelector('.next'))             {document.querySelector('.next').className = 'moveLeft'}
     if(document.querySelector('.waiting'))          {document.querySelector('.waiting').className = 'appearfromRight'}
     
-    let newBox = document.createElement('div')
+    let newBox = document.createElement('p')
     newBox.classList = 'waiting'
     newBox.textContent = squares[targetSquare3rd]
     document.querySelector('#maindiv').appendChild(newBox)      
@@ -200,15 +200,18 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
 })
 
 
-document.querySelector("[id='18']").innerHTML = `<p class="main">F4</p>`
-document.querySelector("[id='38']").innerHTML = `<p class="next">F8</p>`
+//document.querySelector("[id='18']").innerHTML = `<p class="main">F4</p>`
+//document.querySelector("[id='38']").innerHTML = `<p class="next">F8</p>`
 
+//document.querySelector('#chessboard').insertAdjacentHTML('afterbegin', `<p class="main">F4</p>`)
+//document.querySelector('#chessboard').insertAdjacentHTML('afterbegin', `<p class="next">H4</p>`)
 
 
 document.querySelector('#chessboard').addEventListener('click', () => {
     console.log('click');
     document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
-    //document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
+    document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
+    document.querySelector('.secondDiv').style.width = document.getElementById('chessboard').style.width
 })
 
 
