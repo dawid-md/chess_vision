@@ -4,14 +4,14 @@
 
 #maindiv{
     position: relative; /*gives childs possibility to position absolute relatively to parent, not to browser*/
-    aspect-ratio:1/1;
-    align-items: center;
+    /*align-items: left;
+    aspect-ratio:1/1;*/
     /*border: 2px solid red;*/
 }
 
 #chessboard {
-    margin: auto;
-    width: 100%;
+    /*margin: auto;
+    width: 100%;*/
     /*height: 634px;*/
     aspect-ratio:1/1;
     display: flex;

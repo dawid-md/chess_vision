@@ -8,6 +8,7 @@ let targetSquare2nd;
 let targetSquare3rd;
 let selectedSquare = 0
 let isGameRunning = false
+let resizeable = true
 
 function drawChessboard() {
     let squares = {}                        //coordinates!!!
@@ -208,12 +209,24 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
 
 
 document.querySelector('#chessboard').addEventListener('click', () => {
-    console.log('click');
-    document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
-    document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
-    document.querySelector('.secondDiv').style.width = document.getElementById('chessboard').style.width
+    if(resizeable == true){
+        document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
+        document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
+        document.querySelector('.main').style.left = (document.getElementById('chessboard').offsetWidth * 0.2) + 'px'
+        document.querySelector('.next').style.left = (document.getElementById('chessboard').offsetWidth * 0.62) + 'px'
+        document.querySelector('.waiting').style.left = (document.getElementById('chessboard').offsetWidth * 1.05) + 'px'
+        //document.querySelector('.appearfromRight').style.left = (document.getElementById('chessboard').offsetWidth * 0.62) + 'px'
+        //document.querySelector('.moveLeft').style.left = (document.getElementById('chessboard').offsetWidth * 0.2) + 'px'
+        //document.querySelector('.fadeLeft').style.left = (document.getElementById('chessboard').offsetWidth * -0.2) + 'px'
+        //document.querySelector('.appearfromRight').style.left = (document.getElementById('chessboard').offsetWidth * 0.2) + 'px'
+        document.getElementById('maindiv').style.width = document.getElementById('chessboard').style.width
+    }
+    else if (resizeable == false){
+        document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
+        document.getElementById('maindiv').style.width = document.getElementById('chessboard').style.width
+        document.getElementById('maindiv').style.height = document.getElementById('chessboard').style.height
+    }
 })
-
 
 generateRandomSquares()
 document.querySelector('.next').textContent = coordinates[randomSquares[0]]
