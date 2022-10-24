@@ -58,17 +58,20 @@ function setTarget(squares) {
     let newBox = document.createElement('p')
     newBox.classList = 'waiting'
     newBox.textContent = squares[targetSquare3rd]
-    document.querySelector('#maindiv').appendChild(newBox)      
-    setTimeout(() => {document.querySelector('.fadeLeft').remove()}, 200)
+    document.querySelector('#maindiv').appendChild(newBox)
+    
+    document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
+    document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
+    document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
+
+    setTimeout(() => {document.querySelector('.fadeLeft').remove()}, 150)
     }     
 
 }
 
 function checkSquare(targetSquare, selectedSquare) {
     if(targetSquare == selectedSquare){
-        score += 1
-        document.querySelector('#score').textContent = score
-        console.log('correct')
+        document.querySelector('#score').textContent = score += 1
     }
     else {
         document.querySelector('.main').style.color = "red"
@@ -97,6 +100,7 @@ function countDown(currentTime){
             reject('game has been interrupted')
             startButton.classList.remove('disabled')
             resizeable = true
+            document.querySelector('#chessboard').style.resize = 'both'
         })
     })
 }
@@ -144,6 +148,7 @@ const userLabel = document.getElementById('#username')
 const scoreLabel = document.querySelector('#userscore')
 
 startButton.addEventListener('click', () => {
+    document.querySelector('#chessboard').style.resize = 'none'
     resizeable = false
     game()
 })
@@ -203,29 +208,20 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
 })
 
 document.querySelector('#chessboard').addEventListener('click', () => {
-    //if(resizeable == true){
+    if(resizeable == true){
         document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
         document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
         document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
         document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
-
-        //document.querySelector('.main').style.left = (document.getElementById('chessboard').offsetWidth * 0.2) + 'px'
-        //document.querySelector('.next').style.left = (document.getElementById('chessboard').offsetWidth * 0.62) + 'px'
-        //document.querySelector('.waiting').style.left = (document.getElementById('chessboard').offsetWidth * 1.05) + 'px'
         document.getElementById('maindiv').style.width = document.getElementById('chessboard').style.width
-    //}
+
+        document.querySelector('.progress').style.width = (document.getElementById('chessboard').style.width)
+    }
 })
 
 generateRandomSquares()
 document.querySelector('.next').textContent = coordinates[randomSquares[0]]
 document.querySelector('.waiting').textContent = coordinates[randomSquares[1]]
-
-
-
-
-
-
-
 
 
 

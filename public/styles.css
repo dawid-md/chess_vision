@@ -4,15 +4,9 @@
 
 #maindiv{
     position: relative; /*gives childs possibility to position absolute relatively to parent, not to browser*/
-    /*align-items: left;
-    aspect-ratio:1/1;*/
-    /*border: 2px solid red;*/
 }
 
 #chessboard {
-    /*margin: auto;
-    width: 100%;*/
-    /*height: 634px;*/
     aspect-ratio:1/1;
     display: flex;
     flex-wrap: wrap;
@@ -67,11 +61,11 @@
 }
 .fadeLeft{
     color: rgb(255, 255, 255);
-    font-size: 110px;
+    font-size: 180px;
     position: absolute;
     transition: 0.1s;
-    left: -20%;
-    top: 31%;
+    left: -30%;
+    top: 23%;
     opacity: 0;
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
