@@ -174,6 +174,10 @@ document.querySelectorAll('.nav-link')[0].addEventListener('click', () => {
     $('#settingsModal').modal('show') 
 })
 
+document.querySelectorAll('.nav-link')[2].addEventListener('click', () => {
+    $('#aboutModal').modal('show') 
+})
+
 document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
     let users 
     document.getElementById("tableBody").innerHTML = "";

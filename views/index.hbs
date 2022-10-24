@@ -145,7 +145,7 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h1>Settings</h1>
+          <h2>Settings</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -153,9 +153,28 @@
             <input class="form-check-input" type="checkbox" role="switch" id="showprogressbar" checked>
             <label class="form-check-label" for="showprogressbar">Progress Bar</label>
           </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="darktheme" checked>
+            <label class="form-check-label" for="darktheme">Dark Theme</label>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="showcoordinates">
+            <label class="form-check-label" for="showcoordinates">Show Coordinates</label>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-light btn-lg" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- About Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h3>Inspired by </h3><p>lichess.org/training/coordinate</p>
         </div>
       </div>
     </div>
