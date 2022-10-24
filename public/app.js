@@ -203,14 +203,17 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
 })
 
 document.querySelector('#chessboard').addEventListener('click', () => {
-    if(resizeable == true){
+    //if(resizeable == true){
         document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
         document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
-        document.querySelector('.main').style.left = (document.getElementById('chessboard').offsetWidth * 0.2) + 'px'
-        document.querySelector('.next').style.left = (document.getElementById('chessboard').offsetWidth * 0.62) + 'px'
-        document.querySelector('.waiting').style.left = (document.getElementById('chessboard').offsetWidth * 1.05) + 'px'
+        document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
+        document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
+
+        //document.querySelector('.main').style.left = (document.getElementById('chessboard').offsetWidth * 0.2) + 'px'
+        //document.querySelector('.next').style.left = (document.getElementById('chessboard').offsetWidth * 0.62) + 'px'
+        //document.querySelector('.waiting').style.left = (document.getElementById('chessboard').offsetWidth * 1.05) + 'px'
         document.getElementById('maindiv').style.width = document.getElementById('chessboard').style.width
-    }
+    //}
 })
 
 generateRandomSquares()
