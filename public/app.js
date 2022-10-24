@@ -170,8 +170,12 @@ saveButton.addEventListener('click', () => {
         });
 })
 
-document.querySelectorAll('.nav-link')[1].addEventListener('click', () => { 
+document.querySelectorAll('.nav-link')[0].addEventListener('click', () => {
+    $('#settingsModal').modal('show') 
+})
 
+document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
+    let users 
     document.getElementById("tableBody").innerHTML = "";
 
     fetch('/results', {method: 'GET'})
@@ -182,29 +186,41 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
             throw new Error('Request data failed.');
         })
         .then(function(data) {
-            let users = data 
+            users = data 
             users?.sort((a, b) => (a.score > b.score ? -1 : 1))
             users.forEach(user => {
                 fillTable(user)
             })
         })
     
-    function fillTable(user) {
-        let table = document.getElementById("tableBody");
-        let row = table.insertRow(-1);
-        let cell1 = row.insertCell(0);
-        let cell2 = row.insertCell(1);
-        let cell3 = row.insertCell(2);
-        let cell4 = row.insertCell(3);
-
-        cell1.innerHTML = document.getElementById('leaderboard').rows.length - 1
-        cell2.innerHTML = user['name']
-        cell3.innerHTML = user['score']
-        cell4.innerHTML = (user['date'].toString()).substring(0, 10);
+    function fillTable(user, selectedTime = 30) {
+        if(user['timer'] == selectedTime) {
+            let table = document.getElementById("tableBody");
+            let row = table.insertRow(-1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
+            cell1.innerHTML = document.getElementById('leaderboard').rows.length - 1
+            cell2.innerHTML = user['name']
+            cell3.innerHTML = user['score']
+            cell4.innerHTML = (user['date'].toString()).substring(0, 10);
+        }
     }
-    
-    
     $('#resultModal').modal('show') 
+
+    document.querySelector('#btnradio1').addEventListener('click', () => {
+        document.getElementById("tableBody").innerHTML = "";
+        users.forEach(user => {fillTable(user, 60)})
+    })
+    document.querySelector('#btnradio2').addEventListener('click', () => {
+        document.getElementById("tableBody").innerHTML = "";
+        users.forEach(user => {fillTable(user, 30)})
+    })
+    document.querySelector('#btnradio3').addEventListener('click', () => {
+        document.getElementById("tableBody").innerHTML = "";
+        users.forEach(user => {fillTable(user, 15)})
+    })
 })
 
 document.querySelector('#chessboard').addEventListener('click', () => {
@@ -223,7 +239,14 @@ generateRandomSquares()
 document.querySelector('.next').textContent = coordinates[randomSquares[0]]
 document.querySelector('.waiting').textContent = coordinates[randomSquares[1]]
 
-
+document.querySelector('#showprogressbar').addEventListener('click', () => {
+    if(document.querySelector('#showprogressbar').checked) {
+        document.querySelector('.progress').style.visibility = 'visible'
+    }
+    else if(document.querySelector('#showprogressbar').checked == false) {
+        document.querySelector('.progress').style.visibility = 'hidden'
+    }
+})
 
 //document.querySelector("[id='18']").innerHTML = `<p class="main">F4</p>`
 //document.querySelector("[id='38']").innerHTML = `<p class="next">F8</p>`
