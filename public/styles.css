@@ -2,6 +2,10 @@
     background-color: #292E33 !important;
 }
 
+.coordinatesColumn {
+    float: right;
+}
+
 #maindiv{
     position: relative; /*gives childs possibility to position absolute relatively to parent, not to browser*/
 }

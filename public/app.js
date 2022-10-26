@@ -89,6 +89,9 @@ function countDown(currentTime){
             if(currentTime <= 0) {
                 document.querySelector('#time-left').textContent = 0
                 clearInterval(timer)
+                document.querySelector('.progress-bar').style.width = "0%"
+                document.querySelector('#chessboard').style.resize = 'both'
+                resizeable = true
                 resolve(score)
             }
         }, 100)
@@ -96,11 +99,11 @@ function countDown(currentTime){
             clearInterval(timer)
             document.querySelector('#time-left').textContent = gameTime.toFixed(1)
             document.querySelector('#score').textContent = 0
-            document.querySelector('.progress-bar').style.width = "0%"
             reject('game has been interrupted')
             startButton.classList.remove('disabled')
-            resizeable = true
+            document.querySelector('.progress-bar').style.width = "0%"
             document.querySelector('#chessboard').style.resize = 'both'
+            resizeable = true
         })
     })
 }
