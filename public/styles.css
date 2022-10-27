@@ -2,12 +2,15 @@
     background-color: #292E33 !important;
 }
 
-.coordinatesColumn {
-    float: right;
+.sc {
+    /* display: flex; */
 }
 
 #maindiv{
     position: relative; /*gives childs possibility to position absolute relatively to parent, not to browser*/
+    float: left;
+    width: 97%;
+    height: 100%;
 }
 
 #chessboard {
@@ -16,6 +19,25 @@
     flex-wrap: wrap;
     resize: both;
     overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.coordinatesColumn {
+    margin-left: 1%;
+    width: 2%;
+    height: 100%;
+    float: left; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.coordinatesRow{
+    width: 97%;
+    clear: both;
+    display: flex;
+    justify-content: space-between;
 }
 
 .squareE {

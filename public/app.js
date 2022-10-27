@@ -237,8 +237,10 @@ document.querySelector('#chessboard').addEventListener('click', () => {
         document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
         document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
         document.getElementById('maindiv').style.width = document.getElementById('chessboard').style.width
-
         document.querySelector('.progress').style.width = (document.getElementById('chessboard').style.width)
+
+        document.querySelector('.coordinatesRow').style.width = (document.getElementById('chessboard').style.width)
+        document.querySelector('.coordinatesColumn').style.Height = (document.getElementById('chessboard').style.height)
     }
 })
 
