@@ -256,8 +256,3 @@ document.querySelector('#showprogressbar').addEventListener('click', () => {
         document.querySelector('.progress').style.visibility = 'hidden'
     }
 })
-
-//document.querySelector("[id='18']").innerHTML = `<p class="main">F4</p>`
-//document.querySelector("[id='38']").innerHTML = `<p class="next">F8</p>`
-//document.querySelector('#chessboard').insertAdjacentHTML('afterbegin', `<p class="main">F4</p>`)
-//document.querySelector('#chessboard').insertAdjacentHTML('afterbegin', `<p class="next">H4</p>`)
