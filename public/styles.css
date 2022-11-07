@@ -7,9 +7,10 @@
 }
 
 #maindiv{
+    aspect-ratio:1/1;
     position: relative; /*gives childs possibility to position absolute relatively to parent, not to browser*/
     float: left;
-    width: 97%;
+    width: 75%;
     height: 100%;
 }
 
@@ -23,6 +24,10 @@
     height: 100%;
 }
 
+.progress{
+    width: 75%;
+}
+
 .coordinatesColumn {
     margin-left: 1%;
     width: 2%;
@@ -34,7 +39,7 @@
 }
 
 .coordinatesRow{
-    width: 97%;
+    width: 75%;
     clear: both;
     display: flex;
     justify-content: space-between;
@@ -68,14 +73,14 @@
     transition: 0.1s;
     left: 62%;
     top: 54%;
-    font-size: 60px;
+    font-size: 68px;
     opacity: 0.9;
     pointer-events:none;
     text-shadow: 0px 0px 7px #000000;
 }
 .main{
     color: rgb(255, 255, 255);
-    font-size: 180px;
+    font-size: 205px;
     text-align: left;
     position: absolute;
     left: 20%;
