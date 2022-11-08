@@ -2,16 +2,12 @@
     background-color: #292E33 !important;
 }
 
-.sc {
-    /* display: flex; */
-}
-
 #maindiv{
-    aspect-ratio:1/1;
     position: relative; /*gives childs possibility to position absolute relatively to parent, not to browser*/
     float: left;
     width: 75%;
-    height: 100%;
+    max-width: 935px;
+    max-height: 935px;
 }
 
 #chessboard {
@@ -22,20 +18,24 @@
     overflow: auto;
     width: 100%;
     height: 100%;
+    max-width: 935px;
+    max-height: 935px;
 }
 
 .progress{
     width: 75%;
+    max-width: 935px;
 }
 
 .coordinatesColumn {
     margin-left: 1%;
     width: 2%;
-    height: 100%;
+    height: 95%;
     float: left; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-height: 900px;
 }
 
 .coordinatesRow{
@@ -43,6 +43,8 @@
     clear: both;
     display: flex;
     justify-content: space-between;
+    padding-top: 2px;
+    max-width: 900px;
 }
 
 .squareE {
@@ -54,7 +56,7 @@
 .squareO {
     background-color: rgb(240, 217, 181);
     width: 12.5%;
-    height: 12.5%;
+    height: 12.5%; 
     cursor: pointer;
 }
 .waiting{

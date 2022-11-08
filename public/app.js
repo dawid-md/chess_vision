@@ -230,7 +230,8 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
     })
 })
 
-document.querySelector('#chessboard').addEventListener('click', () => {
+//document.querySelector('#chessboard').addEventListener('click', () => {
+window.addEventListener('click', () => {
     if(resizeable == true){
         document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
         document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
@@ -239,7 +240,7 @@ document.querySelector('#chessboard').addEventListener('click', () => {
         document.getElementById('maindiv').style.width = document.getElementById('chessboard').style.width
         document.getElementById('maindiv').style.height = document.getElementById('chessboard').style.width
         document.querySelector('.progress').style.width = (document.getElementById('chessboard').style.width)
-
+        
         document.querySelector('.coordinatesRow').style.width = (document.getElementById('chessboard').style.width)
         document.querySelector('.coordinatesColumn').style.height = (document.getElementById('chessboard').style.height)
     }
@@ -257,3 +258,7 @@ document.querySelector('#showprogressbar').addEventListener('click', () => {
         document.querySelector('.progress').style.visibility = 'hidden'
     }
 })
+
+// window.addEventListener('click', () => {
+//     console.log('click');
+// })
