@@ -25,6 +25,7 @@
 .progress{
     width: 75%;
     max-width: 935px;
+    margin-top: -5px;
 }
 
 .coordinatesColumn {

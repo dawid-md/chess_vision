@@ -49,10 +49,25 @@
         </div>
       </div>
 
-      <div class="card bg-secondary text-center mb-5">
+      <div class="card bg-secondary text-center mb-3">
         <div class="card-body">
           <h3 class="card-title">Time</h5>
           <h1 class="card-text" id="time-left">30.0</h1>
+        </div>
+      </div>
+
+      <div class="card bg-secondary text-center mb-5">
+        <div class="card-body">
+          <div class="btn-group btn-group-lg" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+            <label class="btn btn-outline-warning" for="btncheck1">60s</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" checked>
+            <label class="btn btn-outline-warning" for="btncheck2">30s</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+            <label class="btn btn-outline-warning" for="btncheck3">15s</label>
+          </div>
         </div>
       </div>
 
@@ -155,8 +170,12 @@
             <label class="form-check-label" for="showprogressbar">Progress Bar</label>
           </div>
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="showcoordinates">
+            <input class="form-check-input" type="checkbox" role="switch" id="showcoordinates" checked>
             <label class="form-check-label" for="showcoordinates">Show Coordinates</label>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="playsounds">
+            <label class="form-check-label" for="playsounds">Sounds</label>
           </div>
         </div>
         <div class="modal-footer">

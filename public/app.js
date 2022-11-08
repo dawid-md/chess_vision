@@ -259,6 +259,22 @@ document.querySelector('#showprogressbar').addEventListener('click', () => {
     }
 })
 
-// window.addEventListener('click', () => {
-//     console.log('click');
-// })
+document.querySelector('#showcoordinates').addEventListener('click', () => {
+    if(document.querySelector('#showcoordinates').checked) {
+        document.querySelector('.coordinatesRow').style.visibility = 'visible'
+        document.querySelector('.coordinatesColumn').style.visibility = 'visible'
+        document.querySelector('.progress').style.marginTop = '-5px'
+    }
+    else if(document.querySelector('#showcoordinates').checked == false) {
+        document.querySelector('.coordinatesRow').style.visibility = 'hidden'
+        document.querySelector('.coordinatesColumn').style.visibility = 'hidden'
+        document.querySelector('.progress').style.marginTop = '-20px'
+    }
+})
+
+const timeSelectors = document.querySelectorAll('.btn-outline-warning')
+timeSelectors.forEach(button => {
+    button.addEventListener('click', (e) => {
+        button.removeAttribute('checked')
+    })
+})
