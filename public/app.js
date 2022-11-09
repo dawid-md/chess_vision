@@ -216,26 +216,20 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
     }
     $('#resultModal').modal('show') 
 
-    document.querySelector('#btnradio1').addEventListener('click', () => {
-        document.getElementById("tableBody").innerHTML = "";
-        users.forEach(user => {fillTable(user, 60)})
-    })
-    document.querySelector('#btnradio2').addEventListener('click', () => {
-        document.getElementById("tableBody").innerHTML = "";
-        users.forEach(user => {fillTable(user, 30)})
-    })
-    document.querySelector('#btnradio3').addEventListener('click', () => {
-        document.getElementById("tableBody").innerHTML = "";
-        users.forEach(user => {fillTable(user, 15)})
+    const topSelectors = document.querySelectorAll('.btnTop')
+    topSelectors.forEach(button => {
+        button.addEventListener('click', () => {
+            document.getElementById("tableBody").innerHTML = "";
+            users.forEach(user => {fillTable(user, button.value * 1)})
+        })
     })
 })
 
-//document.querySelector('#chessboard').addEventListener('click', () => {
 window.addEventListener('click', () => {
     if(resizeable == true){
         document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
         document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
-        document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
+        document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.55) + 'px'
         document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
         document.getElementById('maindiv').style.width = document.getElementById('chessboard').style.width
         document.getElementById('maindiv').style.height = document.getElementById('chessboard').style.width
@@ -272,9 +266,14 @@ document.querySelector('#showcoordinates').addEventListener('click', () => {
     }
 })
 
-const timeSelectors = document.querySelectorAll('.btn-outline-warning')
+const timeSelectors = document.querySelectorAll('.btnTime')
 timeSelectors.forEach(button => {
-    button.addEventListener('click', (e) => {
-        button.removeAttribute('checked')
+    button.addEventListener('click', () => {
+        timeSelectors[0].checked = false
+        timeSelectors[1].checked = false
+        timeSelectors[2].checked = false
+        button.checked = true
+        document.querySelector('#time-left').innerHTML = button.value + ".0"
+        gameTime = button.value * 1
     })
 })
