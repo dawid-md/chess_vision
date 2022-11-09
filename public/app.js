@@ -42,6 +42,10 @@ function drawChessboard() {
         }
     }
 
+    // let circle = document.createElement('div')
+    // circle.id = 'circle'
+    // document.querySelector("[id='64']").appendChild(circle)
+
     return squares
 }
 
@@ -61,8 +65,8 @@ function setTarget(squares) {
     document.querySelector('#maindiv').appendChild(newBox)
     
     document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
-    document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
-    document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
+    document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
+    document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
 
     setTimeout(() => {document.querySelector('.fadeLeft').remove()}, 150)
     }     
@@ -182,6 +186,10 @@ document.querySelectorAll('.nav-link')[2].addEventListener('click', () => {
 })
 
 document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
+
+    document.querySelectorAll('.btnTop').forEach(button => button.checked = false )
+    document.querySelector('#btnradio2').checked = true
+
     let users 
     document.getElementById("tableBody").innerHTML = "";
 
@@ -229,8 +237,8 @@ window.addEventListener('click', () => {
     if(resizeable == true){
         document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
         document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
-        document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.55) + 'px'
-        document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 10.6) + 'px'
+        document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
+        document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
         document.getElementById('maindiv').style.width = document.getElementById('chessboard').style.width
         document.getElementById('maindiv').style.height = document.getElementById('chessboard').style.width
         document.querySelector('.progress').style.width = (document.getElementById('chessboard').style.width)
@@ -277,3 +285,5 @@ timeSelectors.forEach(button => {
         gameTime = button.value * 1
     })
 })
+
+setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 3000)
