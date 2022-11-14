@@ -286,4 +286,4 @@ timeSelectors.forEach(button => {
     })
 })
 
-setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 3000)
+setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 2000)

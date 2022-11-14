@@ -1,6 +1,9 @@
 .bg-secondary {
     background-color: #292E33 !important;
 }
+.bg-dark {
+    background-color: #181818 !important;
+}
 
 #maindiv{
     position: relative; /*gives childs possibility to position absolute relatively to parent, not to browser*/
@@ -136,16 +139,16 @@
     }
     100% {
         position: absolute;
-        background: blue;
+        background: #231f12;
     }
    }
     .redcircle {
         animation-name: redC;
-        animation-duration: 3s;
+        animation-duration: 2s;
         position: absolute;
         width: 15px;
         height: 15px;
-        background: blue;
+        background: #ffc107;
         border-radius: 50%;
         top: 99%;
         left: 99%;
@@ -155,6 +158,10 @@
         justify-content: center;
         align-content: center;
         flex-direction: column;
-        opacity: 0.8;
+        opacity: 0.5;
+    }
+    .redcircle:first-child{
+        color: rgb(255, 255, 255);
+        padding-top: 2%;
     }
   
