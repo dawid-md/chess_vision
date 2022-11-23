@@ -117,16 +117,13 @@
     font-family: digital-7;
   }
 
-  /* #redcircle {
-    width: 20px;
-    height: 20px;
-    background: red;
-    border-radius: 50%;
-    opacity: 1;
-    position: absolute;
-    top: 98%;
-    left: 98%;
-  } */
+  #startCard, #stopCard{
+    cursor: pointer;
+  }
+
+  #stopCard{
+    display: none;
+  }
 
   @keyframes redC {
     50% {
@@ -135,7 +132,7 @@
         top: 85%;
         left: 85%;
         font-size: 40px;
-        opacity: 0.1;
+        opacity: 0.4;
     }
     100% {
         position: absolute;

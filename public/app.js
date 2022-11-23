@@ -99,12 +99,15 @@ function countDown(currentTime){
                 resolve(score)
             }
         }, 100)
-        stopButton.addEventListener('click', () => {
+        stopCard.addEventListener('click', () => {
             clearInterval(timer)
             document.querySelector('#time-left').textContent = gameTime.toFixed(1)
             document.querySelector('#score').textContent = 0
+            startCard.style.display = 'block'
+            stopCard.style.display = 'none'
             reject('game has been interrupted')
-            startButton.classList.remove('disabled')
+            startCard.style.display = 'block'
+            stopCard.style.display = 'none'
             document.querySelector('.progress-bar').style.width = "0%"
             document.querySelector('#chessboard').style.resize = 'both'
             resizeable = true
@@ -113,20 +116,21 @@ function countDown(currentTime){
 }
 
 function game(){
-    startButton.classList.add('disabled')
-    score = 0
     isGameRunning = true
+    score = 0
     setTarget(coordinates)
     countDown(gameTime)
         .then((score) => {
             isGameRunning = false
-            startButton.classList.remove('disabled')
+            startCard.style.display = 'block'
+            stopCard.style.display = 'none'
             $('#exampleModal').modal('show');
             document.getElementById('#userscore').textContent = score
         })
         .catch((message) => {
             isGameRunning = false
-            startButton.classList.remove('disabled')
+            startCard.style.display = 'block'
+            stopCard.style.display = 'none'
             console.log(message)
         })
 }
@@ -148,15 +152,18 @@ function generateRandomSquares(){
 }
 
 const coordinates = drawChessboard()
-const startButton = document.querySelector('#start')
-const stopButton = document.querySelector('#stop')
 const saveButton = document.querySelector('#savescore')
 const userLabel = document.getElementById('#username')
 const scoreLabel = document.querySelector('#userscore')
+const startCard = document.querySelector('#startCard')
+const stopCard = document.querySelector('#stopCard')
 
-startButton.addEventListener('click', () => {
+startCard.addEventListener('click', () => {
     document.querySelector('#chessboard').style.resize = 'none'
     resizeable = false
+    document.querySelector('#score').textContent = 0
+    startCard.style.display = 'none'
+    stopCard.style.display = 'block'
     game()
 })
 
@@ -286,4 +293,4 @@ timeSelectors.forEach(button => {
     })
 })
 
-setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 2000)
+setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 2500)
