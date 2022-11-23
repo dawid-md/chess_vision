@@ -1,6 +1,8 @@
 let gameTime = 30
 let timer
 let score = 0
+let currentTime
+let scoreSegments = {}
 let randomSquares = []
 let generatedSquare = 0
 let targetSquare;
@@ -42,8 +44,6 @@ function drawChessboard() {
         }
     }
 
-    // let circle = document.createElement('div')
-    // circle.id = 'circle'
     // document.querySelector("[id='64']").appendChild(circle)
 
     return squares
@@ -76,6 +76,8 @@ function setTarget(squares) {
 function checkSquare(targetSquare, selectedSquare) {
     if(targetSquare == selectedSquare){
         document.querySelector('#score').textContent = score += 1
+        scoreSegments[score] = currentTime
+        console.log(scoreSegments);
     }
     else {
         document.querySelector('.main').style.color = "red"
@@ -83,8 +85,9 @@ function checkSquare(targetSquare, selectedSquare) {
     }
 }
 
-function countDown(currentTime){
-    let barMax = currentTime
+function countDown(gameTime){
+    let barMax = gameTime
+    currentTime = gameTime
     return new Promise((resolve, reject) => {
         timer = setInterval(function(){
             currentTime -= 0.1
@@ -174,7 +177,7 @@ saveButton.addEventListener('click', () => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name: userLabel.value, score: score, date: new Date(), timer: gameTime })
+        body: JSON.stringify({ name: userLabel.value, score: score, date: new Date(), timer: gameTime, segments: scoreSegments })
     }).then(function(response) {
         if(response.ok) {
             console.log('database updated');

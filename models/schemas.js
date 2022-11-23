@@ -16,6 +16,10 @@ const scoreSh = new mongoose.Schema({
     timer: {
         type: Number,
         required: true
+    },
+    segments: {
+        type: Object,
+        required: true
     }
 })
 
