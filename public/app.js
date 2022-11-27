@@ -1,4 +1,4 @@
-let gameTime = 30
+let gameTime = 15
 let timer
 let score = 0
 let currentTime
@@ -77,11 +77,11 @@ function checkSquare(targetSquare, selectedSquare) {
     if(targetSquare == selectedSquare){
         document.querySelector('#score').textContent = score += 1
         scoreSegments[score] = currentTime
-        console.log(scoreSegments);
+        //console.log(scoreSegments);
     }
     else {
         document.querySelector('.main').style.color = "red"
-        document.querySelector('.main').style.opacity = 0.1
+        document.querySelector('.main').style.opacity = 0.2
     }
 }
 
@@ -197,8 +197,8 @@ document.querySelectorAll('.nav-link')[2].addEventListener('click', () => {
 
 document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
 
-    document.querySelectorAll('.btnTop').forEach(button => button.checked = false )
-    document.querySelector('#btnradio2').checked = true
+    document.querySelectorAll('.btnTop').forEach(button => button.checked = false)
+    document.querySelector('#btnradio3').checked = true
 
     let users 
     document.getElementById("tableBody").innerHTML = "";
@@ -218,7 +218,7 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
             })
         })
     
-    function fillTable(user, selectedTime = 30) {
+    function fillTable(user, selectedTime = 15) {
         if(user['timer'] == selectedTime) {
             let table = document.getElementById("tableBody");
             let row = table.insertRow(-1);
@@ -226,10 +226,15 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
             let cell2 = row.insertCell(1);
             let cell3 = row.insertCell(2);
             let cell4 = row.insertCell(3);
+            let cell5 = row.insertCell(4);
             cell1.innerHTML = document.getElementById('leaderboard').rows.length - 1
             cell2.innerHTML = user['name']
             cell3.innerHTML = user['score']
             cell4.innerHTML = (user['date'].toString()).substring(0, 10);
+            let button = document.createElement('button')
+                button.innerText = "Details"
+                button.classList.add('btn', 'btn-primary')
+            cell5.appendChild(button)
         }
     }
     $('#resultModal').modal('show') 

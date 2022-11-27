@@ -121,7 +121,7 @@
     cursor: pointer;
   }
 
-  #stopCard{
+  #stopCard, #showDetails{
     display: none;
   }
 

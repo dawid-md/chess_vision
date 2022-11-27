@@ -52,21 +52,21 @@
       <div class="card bg-secondary text-center mb-3">
         <div class="card-body">
           <h3 class="card-title">Time</h5>
-          <h1 class="card-text" id="time-left">30.0</h1>
+          <h1 class="card-text" id="time-left">15.0</h1>
         </div>
       </div>
 
       <div class="card bg-dark text-center mb-3">
         <div class="card-body">
           <div class="btn-group btn-group-lg" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" class="btn-check btnTime" id="btncheck1" value="60" autocomplete="off">
-            <label class="btn btn-outline-warning" for="btncheck1">60s</label>
+            <input type="checkbox" class="btn-check btnTime" id="btncheck3" value="15" autocomplete="off" checked>
+            <label class="btn btn-outline-warning" for="btncheck3">15s</label>
 
-            <input type="checkbox" class="btn-check btnTime" id="btncheck2" value="30" autocomplete="off" checked>
+            <input type="checkbox" class="btn-check btnTime" id="btncheck2" value="30" autocomplete="off">
             <label class="btn btn-outline-warning" for="btncheck2">30s</label>
 
-            <input type="checkbox" class="btn-check btnTime" id="btncheck3" value="15" autocomplete="off">
-            <label class="btn btn-outline-warning" for="btncheck3">15s</label>
+            <input type="checkbox" class="btn-check btnTime" id="btncheck1" value="60" autocomplete="off">
+            <label class="btn btn-outline-warning" for="btncheck1">60s</label>
           </div>
         </div>
       </div>
@@ -132,20 +132,21 @@
         <div class="modal-header">
 
     <div class="btn-group" role="group" aria-label="1">
-      <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio1" value="60" autocomplete="off">
-      <label class="btn btn-outline-dark" for="btnradio1">60s</label>
+      <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio3" value="15" autocomplete="off" checked>
+      <label class="btn btn-outline-dark" for="btnradio3">15s</label>
 
-      <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio2" value="30" autocomplete="off" checked>
+      <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio2" value="30" autocomplete="off" >
       <label class="btn btn-outline-dark" for="btnradio2">30s</label>
 
-      <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio3" value="15" autocomplete="off">
-      <label class="btn btn-outline-dark" for="btnradio3">15s</label>
+      <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio1" value="60" autocomplete="off">
+      <label class="btn btn-outline-dark" for="btnradio1">60s</label>
     </div>
 
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
+          <div id="showTable">
           <table class="table" id="leaderboard">
             <thead>
               <tr class="table-dark">
@@ -153,11 +154,16 @@
                 <th scope="col">Player</th>
                 <th scope="col">Score</th>
                 <th scope="col">Date</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody id="tableBody">
             </tbody>
           </table>
+          </div>
+
+          <div id="showDetails">
+          </div>
 
         </div>
         <div class="modal-footer">
