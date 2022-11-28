@@ -76,8 +76,8 @@ function setTarget(squares) {
 function checkSquare(targetSquare, selectedSquare) {
     if(targetSquare == selectedSquare){
         document.querySelector('#score').textContent = score += 1
-        scoreSegments[score] = currentTime
-        //console.log(scoreSegments);
+        scoreSegments[score] = currentTime.toFixed(1)
+        console.log(scoreSegments);
     }
     else {
         document.querySelector('.main').style.color = "red"
@@ -152,6 +152,38 @@ function generateRandomSquares(){
             randomSquares.push(generatedSquare)
         }
     }
+}
+
+function drawChart(chName, chTimer, chSegments){
+    console.log(chName);
+    console.log(chTimer);
+    console.log(chSegments);
+
+    for(j = 0; j <= chTimer; j+=0.5){
+        console.log(j);
+    }
+
+    let ctx = document.getElementById('myChart');
+
+
+    let chartData = [{
+        label: 'A',
+        data: [2,4,6,7,8,9,12,14,15,17,19,21,23,25,27],
+        borderWidth: 1
+    },
+    {
+        label: 'B',
+        data: [1,2,5,6,7,8,10,14,15,17,19,21,23,25,26],
+        borderWidth: 1
+    }]
+
+    new Chart(ctx, {
+      type: 'line',
+        data: {
+            labels: [0,'.',1,'.',2,'.',3,'.',4,'.',5,'.',6,'.',7,'.',8,'.',9,'.',10,'.',11,'.',12,'.',13,'.',14,'.',15],
+            datasets: chartData
+        }
+    });
 }
 
 const coordinates = drawChessboard()
@@ -234,6 +266,11 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
             let button = document.createElement('button')
                 button.innerText = "Details"
                 button.classList.add('btn', 'btn-primary')
+                button.addEventListener('click', () => {
+                    document.getElementById('showTable').style.display = 'none'
+                    document.getElementById('showDetails').style.display = 'block'
+                    drawChart(user['name'], user['timer'], user['segments'])
+                })
             cell5.appendChild(button)
         }
     }
