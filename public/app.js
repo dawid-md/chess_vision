@@ -3,6 +3,7 @@ let timer
 let score = 0
 let currentTime
 let scoreSegments = {}
+let realSegments = {}
 let randomSquares = []
 let generatedSquare = 0
 let targetSquare;
@@ -76,8 +77,7 @@ function setTarget(squares) {
 function checkSquare(targetSquare, selectedSquare) {
     if(targetSquare == selectedSquare){
         document.querySelector('#score').textContent = score += 1
-        scoreSegments[score] = currentTime.toFixed(1)
-        console.log(scoreSegments);
+        realSegments[score] = currentTime.toFixed(1)
     }
     else {
         document.querySelector('.main').style.color = "red"
@@ -90,10 +90,12 @@ function countDown(gameTime){
     currentTime = gameTime
     return new Promise((resolve, reject) => {
         timer = setInterval(function(){
-            currentTime -= 0.1
             document.querySelector('#time-left').textContent = currentTime.toFixed(1)
             document.querySelector('.progress-bar').style.width = (barMax - currentTime)/barMax*100 + '%'
-            if(currentTime <= 0) {
+            if(currentTime.toFixed(1) % 0.5 == 0){
+                scoreSegments[gameTime - currentTime.toFixed(1)] = score
+            }
+            if(currentTime.toFixed(1) <= 0) {
                 document.querySelector('#time-left').textContent = 0
                 clearInterval(timer)
                 document.querySelector('.progress-bar').style.width = "0%"
@@ -101,6 +103,7 @@ function countDown(gameTime){
                 resizeable = true
                 resolve(score)
             }
+            currentTime -= 0.1
         }, 100)
         stopCard.addEventListener('click', () => {
             clearInterval(timer)
