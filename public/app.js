@@ -92,9 +92,9 @@ function countDown(gameTime){
         timer = setInterval(function(){
             document.querySelector('#time-left').textContent = currentTime.toFixed(1)
             document.querySelector('.progress-bar').style.width = (barMax - currentTime)/barMax*100 + '%'
-            if(currentTime.toFixed(1) % 0.5 == 0){
-                scoreSegments[gameTime - currentTime.toFixed(1)] = score
-            }
+            //if(currentTime.toFixed(1) % 0.1 == 0){
+                scoreSegments[(gameTime - currentTime).toFixed(1)] = score
+            //}
             if(currentTime.toFixed(1) <= 0) {
                 document.querySelector('#time-left').textContent = 0
                 clearInterval(timer)
@@ -102,6 +102,7 @@ function countDown(gameTime){
                 document.querySelector('#chessboard').style.resize = 'both'
                 resizeable = true
                 resolve(score)
+                console.log(scoreSegments);
             }
             currentTime -= 0.1
         }, 100)
@@ -157,34 +158,50 @@ function generateRandomSquares(){
     }
 }
 
-function drawChart(chName, chTimer, chSegments){
-    console.log(chName);
-    console.log(chTimer);
-    console.log(chSegments);
+function drawChart(currentUser, Timer, userSegments, otherUsers){
 
-    for(j = 0; j <= chTimer; j+=0.5){
-        console.log(j);
-    }
+    console.log(otherUsers);
 
     let ctx = document.getElementById('myChart');
 
+    let arrayOftimeAxispoints = []
+    let firstUserData = []
+    let secondUserData = []
 
-    let chartData = [{
-        label: 'A',
-        data: [2,4,6,7,8,9,12,14,15,17,19,21,23,25,27],
-        borderWidth: 1
-    },
-    {
-        label: 'B',
-        data: [1,2,5,6,7,8,10,14,15,17,19,21,23,25,26],
-        borderWidth: 1
-    }]
+    for(j = 0.0; j < Timer + 0.01; j+=0.1){
+        arrayOftimeAxispoints.push((j.toFixed(1).toString()))
+        firstUserData.push(userSegments[j.toFixed(1)])
+        secondUserData.push(otherUsers[2]['segments'][j.toFixed(1)])
+    }
+
+    console.log(secondUserData);
+
+    let firstUser = {
+        label: currentUser,
+        data: firstUserData,
+        borderWidth: 1,
+        tension: 0.1
+    }
+
+    let secondUser = {
+        label: otherUsers[2]['name'],
+        data: secondUserData,
+        borderWidth: 1,
+        tension: 0.2
+    }
 
     new Chart(ctx, {
       type: 'line',
+      options: {
+        elements: {
+            point:{
+                radius: 0.2
+            }
+        }
+      },
         data: {
-            labels: [0,'.',1,'.',2,'.',3,'.',4,'.',5,'.',6,'.',7,'.',8,'.',9,'.',10,'.',11,'.',12,'.',13,'.',14,'.',15],
-            datasets: chartData
+            labels: arrayOftimeAxispoints,
+            datasets: [firstUser, secondUser]
         }
     });
 }
@@ -272,7 +289,7 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
                 button.addEventListener('click', () => {
                     document.getElementById('showTable').style.display = 'none'
                     document.getElementById('showDetails').style.display = 'block'
-                    drawChart(user['name'], user['timer'], user['segments'])
+                    drawChart(user['name'], user['timer'], user['segments'], users)
                 })
             cell5.appendChild(button)
         }
