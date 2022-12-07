@@ -158,37 +158,48 @@ function generateRandomSquares(){
     }
 }
 
-function drawChart(currentUser, Timer, userSegments, otherUsers){
+function drawChart(currentUser, allUsers){
 
-    console.log(otherUsers);
-
-    let ctx = document.getElementById('myChart');
+    let currentUserName = currentUser['name']
+    let timer = currentUser['timer']
+    let userSegments = currentUser['segments']
 
     let arrayOftimeAxispoints = []
-    let firstUserData = []
+    let currentUserData = []
     let secondUserData = []
+    let thirdUserData = []
 
-    for(j = 0.0; j < Timer + 0.01; j+=0.1){
+    let currentUserID = allUsers.findIndex(item => item._id === currentUser._id)
+
+    for(j = 0.0; j < timer + 0.01; j+=0.1){
         arrayOftimeAxispoints.push((j.toFixed(1).toString()))
-        firstUserData.push(userSegments[j.toFixed(1)])
-        secondUserData.push(otherUsers[2]['segments'][j.toFixed(1)])
+        currentUserData.push(userSegments[j.toFixed(1)])
+        secondUserData.push(allUsers[currentUserID-1]['segments'][j.toFixed(1)])    //user o pozycje wyzej od current usera
+        thirdUserData.push(allUsers[currentUserID+1]['segments'][j.toFixed(1)])    //user o pozycje nizej od current usera
     }
 
-    console.log(secondUserData);
-
     let firstUser = {
-        label: currentUser,
-        data: firstUserData,
+        label: currentUserName,
+        data: currentUserData,
         borderWidth: 1,
         tension: 0.1
     }
 
     let secondUser = {
-        label: otherUsers[2]['name'],
+        label: allUsers[currentUserID-1]['name'],
         data: secondUserData,
         borderWidth: 1,
-        tension: 0.2
+        tension: 0.1
     }
+
+    let thirdUser = {
+        label: allUsers[currentUserID+1]['name'],
+        data: thirdUserData,
+        borderWidth: 1,
+        tension: 0.1
+    }
+
+    let ctx = document.getElementById('myChart')
 
     new Chart(ctx, {
       type: 'line',
@@ -201,10 +212,12 @@ function drawChart(currentUser, Timer, userSegments, otherUsers){
       },
         data: {
             labels: arrayOftimeAxispoints,
-            datasets: [firstUser, secondUser]
+            datasets: [firstUser, secondUser, thirdUser]
         }
     });
 }
+
+
 
 const coordinates = drawChessboard()
 const saveButton = document.querySelector('#savescore')
@@ -289,7 +302,7 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
                 button.addEventListener('click', () => {
                     document.getElementById('showTable').style.display = 'none'
                     document.getElementById('showDetails').style.display = 'block'
-                    drawChart(user['name'], user['timer'], user['segments'], users)
+                    drawChart(user, users)
                 })
             cell5.appendChild(button)
         }
