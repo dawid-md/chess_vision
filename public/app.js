@@ -164,6 +164,8 @@ function drawChart(currentUser, allUsers){
     let timer = currentUser['timer']
     let userSegments = currentUser['segments']
 
+    allUsers = allUsers.filter(item => item['timer'] == timer)  //usuwa itemy ktore zawieraja inny timer
+
     let arrayOftimeAxispoints = []
     let currentUserData = []
     let secondUserData = []
@@ -171,11 +173,24 @@ function drawChart(currentUser, allUsers){
 
     let currentUserID = allUsers.findIndex(item => item._id === currentUser._id)
 
+    if(currentUserID == 0){
+        secondUserID = 1
+        thirdUserID = 2
+    }
+    else if(currentUserID == allUsers.length - 1){
+        secondUserID = currentUserID - 2
+        thirdUserID = currentUserID - 1
+    }
+    else {
+        secondUserID = currentUserID - 1
+        thirdUserID = currentUserID + 1
+    }
+
     for(j = 0.0; j < timer + 0.01; j+=0.1){
         arrayOftimeAxispoints.push((j.toFixed(1).toString()))
         currentUserData.push(userSegments[j.toFixed(1)])
-        secondUserData.push(allUsers[currentUserID-1]['segments'][j.toFixed(1)])    //user o pozycje wyzej od current usera
-        thirdUserData.push(allUsers[currentUserID+1]['segments'][j.toFixed(1)])    //user o pozycje nizej od current usera
+        secondUserData.push(allUsers[secondUserID]['segments'][j.toFixed(1)])    //user o pozycje wyzej od current usera
+        thirdUserData.push(allUsers[thirdUserID]['segments'][j.toFixed(1)])    //user o pozycje nizej od current usera
     }
 
     let firstUser = {
@@ -186,14 +201,14 @@ function drawChart(currentUser, allUsers){
     }
 
     let secondUser = {
-        label: allUsers[currentUserID-1]['name'],
+        label: allUsers[secondUserID]['name'],
         data: secondUserData,
         borderWidth: 1,
         tension: 0.1
     }
 
     let thirdUser = {
-        label: allUsers[currentUserID+1]['name'],
+        label: allUsers[thirdUserID]['name'],
         data: thirdUserData,
         borderWidth: 1,
         tension: 0.1
@@ -216,7 +231,6 @@ function drawChart(currentUser, allUsers){
         }
     });
 }
-
 
 
 const coordinates = drawChessboard()
@@ -277,13 +291,13 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
         })
         .then(function(data) {
             users = data 
-            users?.sort((a, b) => (a.score > b.score ? -1 : 1))
+            users?.sort((a, b) => (a.score > b.score ? -1 : 1)) //https://levelup.gitconnected.com/sort-array-of-objects-by-two-properties-in-javascript-69234fa6f474
             users.forEach(user => {
                 fillTable(user)
             })
         })
     
-    function fillTable(user, selectedTime = 15) {
+    function fillTable(user, selectedTime = 15) {   //selectedTime default value
         if(user['timer'] == selectedTime) {
             let table = document.getElementById("tableBody");
             let row = table.insertRow(-1);
