@@ -196,27 +196,27 @@ function drawChart(currentUser, allUsers){
     let firstUser = {
         label: currentUserName,
         data: currentUserData,
-        borderWidth: 1,
+        borderWidth: 2.2,
         tension: 0.1
     }
 
     let secondUser = {
         label: allUsers[secondUserID]['name'],
         data: secondUserData,
-        borderWidth: 1,
+        borderWidth: 2,
         tension: 0.1
     }
 
     let thirdUser = {
         label: allUsers[thirdUserID]['name'],
         data: thirdUserData,
-        borderWidth: 1,
+        borderWidth: 2,
         tension: 0.1
     }
 
-    let ctx = document.getElementById('myChart')
+    let canvasforChart = document.getElementById('myChart')
 
-    new Chart(ctx, {
+    let myLineChart = new Chart(canvasforChart, {
       type: 'line',
       options: {
         elements: {
@@ -230,6 +230,13 @@ function drawChart(currentUser, allUsers){
             datasets: [firstUser, secondUser, thirdUser]
         }
     });
+
+    document.querySelector('#backtoTable').addEventListener('click', () => {
+        myLineChart.destroy()
+        document.getElementById('showTable').style.display = 'block'
+        document.getElementById('modalHeader').style.display = 'block'
+        document.getElementById('showDetails').style.display = 'none'
+    })
 }
 
 
@@ -315,6 +322,7 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
                 button.classList.add('btn', 'btn-primary')
                 button.addEventListener('click', () => {
                     document.getElementById('showTable').style.display = 'none'
+                    document.getElementById('modalHeader').style.display = 'none'
                     document.getElementById('showDetails').style.display = 'block'
                     drawChart(user, users)
                 })

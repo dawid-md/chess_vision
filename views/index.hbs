@@ -130,47 +130,49 @@
 <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
-        <div class="modal-header">
+        <div id="modalHeader" class="modal-header">
 
-    <div class="btn-group" role="group" aria-label="1">
-      <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio3" value="15" autocomplete="off" checked>
-      <label class="btn btn-outline-dark" for="btnradio3">15s</label>
+            <div class="btn-group" role="group" aria-label="1">
+              <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio3" value="15" autocomplete="off" checked>
+              <label class="btn btn-outline-dark" for="btnradio3">15s</label>
 
-      <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio2" value="30" autocomplete="off" >
-      <label class="btn btn-outline-dark" for="btnradio2">30s</label>
+              <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio2" value="30" autocomplete="off" >
+              <label class="btn btn-outline-dark" for="btnradio2">30s</label>
 
-      <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio1" value="60" autocomplete="off">
-      <label class="btn btn-outline-dark" for="btnradio1">60s</label>
-    </div>
-
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <input type="radio" class="btn-check btnTop" name="btnradio" id="btnradio1" value="60" autocomplete="off">
+              <label class="btn btn-outline-dark" for="btnradio1">60s</label>
+            </div>
+          
+          {{!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
         </div>
-        <div class="modal-body">
+          <div class="modal-body">
 
-          <div id="showTable">
-          <table class="table" id="leaderboard">
-            <thead>
-              <tr class="table-dark">
-                <th scope="col">#</th>
-                <th scope="col">Player</th>
-                <th scope="col">Score</th>
-                <th scope="col">Date</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody id="tableBody">
-            </tbody>
-          </table>
+            <div id="showTable">
+              <table class="table" id="leaderboard">
+                <thead>
+                  <tr class="table-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">Player</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+              </table>
+            </div>
+
+            <div id="showDetails">
+                <canvas id="myChart"></canvas>
+            </div>
+
           </div>
 
-          <div id="showDetails">
-              <canvas id="myChart"></canvas>
+          <div class="modal-footer">
+            <button id="backtoTable" type="button" class="btn btn-primary">Back</button>
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
           </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-light btn-lg" data-bs-dismiss="modal">Close</button>
-        </div>
       </div>
     </div>
 </div>
