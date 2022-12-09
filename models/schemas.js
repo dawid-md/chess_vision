@@ -20,6 +20,10 @@ const scoreSh = new mongoose.Schema({
     segments: {
         type: Object,
         required: true
+    },
+    lastPoint: {
+        type: Number,
+        required: true
     }
 })
 

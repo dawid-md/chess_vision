@@ -77,7 +77,7 @@ function setTarget(squares) {
 function checkSquare(targetSquare, selectedSquare) {
     if(targetSquare == selectedSquare){
         document.querySelector('#score').textContent = score += 1
-        realSegments[score] = currentTime.toFixed(1)
+        realSegments[score] = currentTime.toFixed(2)
     }
     else {
         document.querySelector('.main').style.color = "red"
@@ -92,9 +92,8 @@ function countDown(gameTime){
         timer = setInterval(function(){
             document.querySelector('#time-left').textContent = currentTime.toFixed(1)
             document.querySelector('.progress-bar').style.width = (barMax - currentTime)/barMax*100 + '%'
-            //if(currentTime.toFixed(1) % 0.1 == 0){
-                scoreSegments[(gameTime - currentTime).toFixed(1)] = score
-            //}
+            scoreSegments[(gameTime - currentTime).toFixed(1)] = score
+
             if(currentTime.toFixed(1) <= 0) {
                 document.querySelector('#time-left').textContent = 0
                 clearInterval(timer)
@@ -102,7 +101,6 @@ function countDown(gameTime){
                 document.querySelector('#chessboard').style.resize = 'both'
                 resizeable = true
                 resolve(score)
-                console.log(scoreSegments);
             }
             currentTime -= 0.1
         }, 100)
@@ -196,7 +194,7 @@ function drawChart(currentUser, allUsers){
     let firstUser = {
         label: currentUserName,
         data: currentUserData,
-        borderWidth: 2.2,
+        borderWidth: 2.5,
         tension: 0.1
     }
 
@@ -239,7 +237,6 @@ function drawChart(currentUser, allUsers){
     })
 }
 
-
 const coordinates = drawChessboard()
 const saveButton = document.querySelector('#savescore')
 const userLabel = document.getElementById('#username')
@@ -263,7 +260,7 @@ saveButton.addEventListener('click', () => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name: userLabel.value, score: score, date: new Date(), timer: gameTime, segments: scoreSegments })
+        body: JSON.stringify({ name: userLabel.value, score: score, date: new Date(), timer: gameTime, segments: scoreSegments, lastPoint: realSegments[score]})
     }).then(function(response) {
         if(response.ok) {
             console.log('database updated');
@@ -298,7 +295,15 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
         })
         .then(function(data) {
             users = data 
-            users?.sort((a, b) => (a.score > b.score ? -1 : 1)) //https://levelup.gitconnected.com/sort-array-of-objects-by-two-properties-in-javascript-69234fa6f474
+            //users.sort((a, b) => (a.score > b.score ? -1 : 1)) //https://levelup.gitconnected.com/sort-array-of-objects-by-two-properties-in-javascript-69234fa6f474
+            users.sort((a, b) => {
+                if (a.score == b.score){
+                    return a.lastPoint > b.lastPoint ? -1 : 1
+                } else {
+                    return a.score > b.score ? -1 : 1
+                }
+            })
+            
             users.forEach(user => {
                 fillTable(user)
             })

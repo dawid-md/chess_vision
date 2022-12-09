@@ -16,7 +16,8 @@ router.post('/add', async (req, res) => {
         score: req.body.score,
         date: req.body.date,
         timer: req.body.timer,
-        segments: req.body.segments
+        segments: req.body.segments,
+        lastPoint: req.body.lastPoint
     })
     try {
         let score = await newScore.save()
