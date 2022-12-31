@@ -428,3 +428,7 @@ timeSelectors.forEach(button => {
 })
 
 setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 2500)
+
+document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
+document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
+document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
