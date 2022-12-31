@@ -117,6 +117,20 @@ function countDown(gameTime){
             document.querySelector('#chessboard').style.resize = 'both'
             resizeable = true
         })
+
+        stopCardMob.addEventListener('click', () => {
+            clearInterval(timer)
+            document.querySelector('#time-left').textContent = gameTime.toFixed(1)
+            document.querySelector('#score').textContent = 0
+            startCardMob.style.display = 'block'
+            stopCardMob.style.display = 'none'
+            reject('game has been interrupted')
+            startCardMob.style.display = 'block'
+            stopCardMob.style.display = 'none'
+            document.querySelector('.progress-bar').style.width = "0%"
+            document.querySelector('#chessboard').style.resize = 'both'
+            resizeable = true
+        })
     })
 }
 
@@ -129,6 +143,8 @@ function game(){
             isGameRunning = false
             startCard.style.display = 'block'
             stopCard.style.display = 'none'
+            startCardMob.style.display = 'block'
+            stopCardMob.style.display = 'none'
             $('#exampleModal').modal('show');
             document.getElementById('#userscore').textContent = score
         })
@@ -136,6 +152,8 @@ function game(){
             isGameRunning = false
             startCard.style.display = 'block'
             stopCard.style.display = 'none'
+            startCardMob.style.display = 'block'
+            stopCardMob.style.display = 'none'
             console.log(message)
         })
 }
@@ -243,6 +261,8 @@ const userLabel = document.getElementById('#username')
 const scoreLabel = document.querySelector('#userscore')
 const startCard = document.querySelector('#startCard')
 const stopCard = document.querySelector('#stopCard')
+const startCardMob = document.querySelector('#startCardMob')
+const stopCardMob = document.querySelector('#stopCardMob')
 
 startCard.addEventListener('click', () => {
     document.querySelector('#chessboard').style.resize = 'none'
@@ -250,6 +270,15 @@ startCard.addEventListener('click', () => {
     document.querySelector('#score').textContent = 0
     startCard.style.display = 'none'
     stopCard.style.display = 'block'
+    game()
+})
+
+startCardMob.addEventListener('click', () => {
+    document.querySelector('#chessboard').style.resize = 'none'
+    resizeable = false
+    document.querySelector('#score').textContent = 0
+    startCardMob.style.display = 'none'
+    stopCardMob.style.display = 'block'
     game()
 })
 
