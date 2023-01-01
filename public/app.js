@@ -100,6 +100,7 @@ function countDown(gameTime){
                 document.querySelector('.progress-bar').style.width = "0%"
                 document.querySelector('#chessboard').style.resize = 'both'
                 resizeable = true
+                document.querySelectorAll('.btn-outline-warning').forEach(buttonElement => buttonElement.classList.remove('disabled'))
                 resolve(score)
             }
             currentTime -= 0.1
@@ -116,6 +117,7 @@ function countDown(gameTime){
             document.querySelector('.progress-bar').style.width = "0%"
             document.querySelector('#chessboard').style.resize = 'both'
             resizeable = true
+            document.querySelectorAll('.btn-outline-warning').forEach(buttonElement => buttonElement.classList.remove('disabled'))
         })
 
         stopCardMob.addEventListener('click', () => {
@@ -130,6 +132,7 @@ function countDown(gameTime){
             document.querySelector('.progress-bar').style.width = "0%"
             document.querySelector('#chessboard').style.resize = 'both'
             resizeable = true
+            document.querySelectorAll('.btn-outline-warning').forEach(buttonElement => buttonElement.classList.remove('disabled'))
         })
     })
 }
@@ -137,6 +140,7 @@ function countDown(gameTime){
 function game(){
     isGameRunning = true
     score = 0
+    document.querySelectorAll('.btn-outline-warning').forEach(buttonElement => buttonElement.classList.add('disabled'))
     setTarget(coordinates)
     countDown(gameTime)
         .then((score) => {
@@ -427,7 +431,7 @@ timeSelectors.forEach(button => {
     })
 })
 
-setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 2500)
+setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 2000)
 
 document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
 document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
