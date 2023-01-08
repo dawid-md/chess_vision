@@ -11,9 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <link rel="stylesheet" href="styles.css">
     <script defer src="app.js"></script>
+
 </head>
 <body class="bg-dark">
 
@@ -89,9 +89,9 @@
 
     <div id="col9" class="col-12 col-sm-9">
       <div id="maindiv">
-          <p class="main">E4</p>
-          <p class="next">E4</p>
-          <p class="waiting">F4</p>
+          <p class="mainField">E4</p>
+          <p class="nextField">E4</p>
+          <p class="waitingField">F4</p>
           <div id="chessboard">
             <div class="redcircle"><p>resize</p></div>
           </div>
@@ -144,7 +144,7 @@
 </div>
 
 <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-xl modalDisplay">
       <div class="modal-content">
         <div id="modalHeader" class="modal-header">
 
@@ -164,14 +164,14 @@
           <div class="modal-body">
 
             <div id="showTable">
-              <table class="table" id="leaderboard">
+              <table class="table" id="leaderboard" class="display">
                 <thead>
                   <tr class="table-dark">
                     <th scope="col">#</th>
                     <th scope="col">Player</th>
                     <th scope="col">Score</th>
                     <th scope="col">Date</th>
-                    <th scope="col"></th>
+                    <th scope="col">Button</th>
                   </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -186,6 +186,7 @@
           </div>
 
           <div class="modal-footer">
+            <button type="button" class="btn btn-success fullscreenButton">Fullscreen</button>
             <button id="backtoTable" type="button" class="btn btn-primary">Back</button>
             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
           </div>
@@ -193,6 +194,7 @@
     </div>
 </div>
 
+<!--Settings modal-->
 <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">

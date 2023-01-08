@@ -12,6 +12,7 @@ let targetSquare3rd;
 let selectedSquare = 0
 let isGameRunning = false
 let resizeable = true
+let myLineChart
 
 function drawChessboard() {
     let squares = {}                        //coordinates!!!
@@ -56,18 +57,18 @@ function setTarget(squares) {
     targetSquare3rd = randomSquares.shift()
     
     if(isGameRunning){
-    if(document.querySelector('.main'))             {document.querySelector('.main').className = 'fadeLeft'}
-    if(document.querySelector('.next'))             {document.querySelector('.next').className = 'main'}
-    if(document.querySelector('.waiting'))          {document.querySelector('.waiting').className = 'next'}
+    if(document.querySelector('.mainField'))             {document.querySelector('.mainField').className = 'fadeLeft'}
+    if(document.querySelector('.nextField'))             {document.querySelector('.nextField').className = 'mainField'}
+    if(document.querySelector('.waitingField'))          {document.querySelector('.waitingField').className = 'nextField'}
     
     let newBox = document.createElement('p')
-    newBox.classList = 'waiting'
+    newBox.classList = 'waitingField'
     newBox.textContent = squares[targetSquare3rd]
     document.querySelector('#maindiv').appendChild(newBox)
     
-    document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
-    document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
-    document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
+    document.querySelector('.mainField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
+    document.querySelector('.nextField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
+    document.querySelector('.waitingField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
 
     setTimeout(() => {document.querySelector('.fadeLeft').remove()}, 150)
     }     
@@ -80,8 +81,8 @@ function checkSquare(targetSquare, selectedSquare) {
         realSegments[score] = currentTime.toFixed(2)
     }
     else {
-        document.querySelector('.main').style.color = "red"
-        document.querySelector('.main').style.opacity = 0.2
+        document.querySelector('.mainField').style.color = "red"
+        document.querySelector('.mainField').style.opacity = 0.2
     }
 }
 
@@ -236,7 +237,7 @@ function drawChart(currentUser, allUsers){
 
     let canvasforChart = document.getElementById('myChart')
 
-    let myLineChart = new Chart(canvasforChart, {
+    myLineChart = new Chart(canvasforChart, {
       type: 'line',
       options: {
         elements: {
@@ -256,7 +257,18 @@ function drawChart(currentUser, allUsers){
         document.getElementById('showTable').style.display = 'block'
         document.getElementById('modalHeader').style.display = 'block'
         document.getElementById('showDetails').style.display = 'none'
+
+        document.querySelector('.modalDisplay').classList.remove('modal-fullscreen')
+        document.querySelector('.modalDisplay').classList.add('modal-xl')
     })
+
+    document.querySelector('.fullscreenButton').addEventListener('click', () =>{
+        document.querySelector('.modalDisplay').classList.remove('modal-xl')
+        document.querySelector('.modalDisplay').classList.add('modal-fullscreen')
+        document.getElementById('myChart').style.width = '96%'
+        document.getElementById('myChart').style.height = '96%'
+    })
+    
 }
 
 const coordinates = drawChessboard()
@@ -376,14 +388,15 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
             users.forEach(user => {fillTable(user, button.value * 1)})
         })
     })
+
 })
 
 window.addEventListener('click', () => {
     if(resizeable == true){
         document.getElementById('chessboard').style.height = document.getElementById('chessboard').style.width
-        document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
-        document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
-        document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
+        document.querySelector('.mainField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
+        document.querySelector('.nextField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
+        document.querySelector('.waitingField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
         document.getElementById('maindiv').style.width = document.getElementById('chessboard').style.width
         document.getElementById('maindiv').style.height = document.getElementById('chessboard').style.width
         document.querySelector('.progress').style.width = (document.getElementById('chessboard').style.width)
@@ -394,8 +407,8 @@ window.addEventListener('click', () => {
 })
 
 generateRandomSquares()
-document.querySelector('.next').textContent = coordinates[randomSquares[0]]
-document.querySelector('.waiting').textContent = coordinates[randomSquares[1]]
+document.querySelector('.nextField').textContent = coordinates[randomSquares[0]]
+document.querySelector('.waitingField').textContent = coordinates[randomSquares[1]]
 
 document.querySelector('#showprogressbar').addEventListener('click', () => {
     if(document.querySelector('#showprogressbar').checked) {
@@ -433,6 +446,6 @@ timeSelectors.forEach(button => {
 
 setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 2000)
 
-document.querySelector('.main').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
-document.querySelector('.next').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
-document.querySelector('.waiting').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
+document.querySelector('.mainField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
+document.querySelector('.nextField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
+document.querySelector('.waitingField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
