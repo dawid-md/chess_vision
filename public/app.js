@@ -1,8 +1,3 @@
-//import drawChart from "./CreateChart"
-import getName from "./CreateChart"
-
-getName()
-
 let gameTime = 15
 let timer
 let score = 0
@@ -184,6 +179,98 @@ function generateRandomSquares(){
     }
 }
 
+function drawChart(currentUser, allUsers){
+
+    let currentUserName = currentUser['name']
+    let timer = currentUser['timer']
+    let userSegments = currentUser['segments']
+
+    allUsers = allUsers.filter(item => item['timer'] == timer)  //usuwa itemy ktore zawieraja inny timer
+
+    let arrayOftimeAxispoints = []
+    let currentUserData = []
+    let secondUserData = []
+    let thirdUserData = []
+
+    let currentUserID = allUsers.findIndex(item => item._id === currentUser._id)
+
+    if(currentUserID == 0){
+        secondUserID = 1
+        thirdUserID = 2
+    }
+    else if(currentUserID == allUsers.length - 1){
+        secondUserID = currentUserID - 2
+        thirdUserID = currentUserID - 1
+    }
+    else {
+        secondUserID = currentUserID - 1
+        thirdUserID = currentUserID + 1
+    }
+
+    for(j = 0.0; j < timer + 0.01; j+=0.1){
+        arrayOftimeAxispoints.push((j.toFixed(1).toString()))
+        currentUserData.push(userSegments[j.toFixed(1)])
+        secondUserData.push(allUsers[secondUserID]['segments'][j.toFixed(1)])    //user o pozycje wyzej od current usera
+        thirdUserData.push(allUsers[thirdUserID]['segments'][j.toFixed(1)])    //user o pozycje nizej od current usera
+    }
+
+    let firstUser = {
+        label: currentUserName,
+        data: currentUserData,
+        borderWidth: 2.5,
+        tension: 0.1
+    }
+
+    let secondUser = {
+        label: allUsers[secondUserID]['name'],
+        data: secondUserData,
+        borderWidth: 2,
+        tension: 0.1
+    }
+
+    let thirdUser = {
+        label: allUsers[thirdUserID]['name'],
+        data: thirdUserData,
+        borderWidth: 2,
+        tension: 0.1
+    }
+
+    let canvasforChart = document.getElementById('myChart')
+
+    myLineChart = new Chart(canvasforChart, {
+      type: 'line',
+      options: {
+        elements: {
+            point:{
+                radius: 0.2
+            }
+        }
+      },
+        data: {
+            labels: arrayOftimeAxispoints,
+            datasets: [firstUser, secondUser, thirdUser]
+        }
+    });
+
+    document.querySelector('#backtoTable').addEventListener('click', () => {
+        myLineChart.destroy()
+        document.getElementById('showTable').style.display = 'block'
+        document.getElementById('modalHeader').style.display = 'block'
+        document.getElementById('showDetails').style.display = 'none'
+
+        document.querySelector('.modalDisplay').classList.remove('modal-fullscreen')
+        document.querySelector('.modalDisplay').classList.add('modal-xl')
+    })
+
+    document.querySelector('.fullscreenButton').addEventListener('click', () =>{
+        document.querySelector('.modalDisplay').classList.remove('modal-xl')
+        document.querySelector('.modalDisplay').classList.add('modal-fullscreen')
+        document.getElementById('myChart').style.width = '96%'
+        document.getElementById('myChart').style.height = '96%'
+    })
+    
+}
+
 const coordinates = drawChessboard()
 const saveButton = document.querySelector('#savescore')
 const userLabel = document.getElementById('#username')
@@ -362,96 +449,3 @@ setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 
 document.querySelector('.mainField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
 document.querySelector('.nextField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
 document.querySelector('.waitingField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'
-
-
-export default function drawChart(currentUser, allUsers){
-
-    let currentUserName = currentUser['name']
-    let timer = currentUser['timer']
-    let userSegments = currentUser['segments']
-
-    allUsers = allUsers.filter(item => item['timer'] == timer)  //usuwa itemy ktore zawieraja inny timer
-
-    let arrayOftimeAxispoints = []
-    let currentUserData = []
-    let secondUserData = []
-    let thirdUserData = []
-
-    let currentUserID = allUsers.findIndex(item => item._id === currentUser._id)
-
-    if(currentUserID == 0){
-        secondUserID = 1
-        thirdUserID = 2
-    }
-    else if(currentUserID == allUsers.length - 1){
-        secondUserID = currentUserID - 2
-        thirdUserID = currentUserID - 1
-    }
-    else {
-        secondUserID = currentUserID - 1
-        thirdUserID = currentUserID + 1
-    }
-
-    for(j = 0.0; j < timer + 0.01; j+=0.1){
-        arrayOftimeAxispoints.push((j.toFixed(1).toString()))
-        currentUserData.push(userSegments[j.toFixed(1)])
-        secondUserData.push(allUsers[secondUserID]['segments'][j.toFixed(1)])    //user o pozycje wyzej od current usera
-        thirdUserData.push(allUsers[thirdUserID]['segments'][j.toFixed(1)])    //user o pozycje nizej od current usera
-    }
-
-    let firstUser = {
-        label: currentUserName,
-        data: currentUserData,
-        borderWidth: 2.5,
-        tension: 0.1
-    }
-
-    let secondUser = {
-        label: allUsers[secondUserID]['name'],
-        data: secondUserData,
-        borderWidth: 2,
-        tension: 0.1
-    }
-
-    let thirdUser = {
-        label: allUsers[thirdUserID]['name'],
-        data: thirdUserData,
-        borderWidth: 2,
-        tension: 0.1
-    }
-
-    let canvasforChart = document.getElementById('myChart')
-
-    myLineChart = new Chart(canvasforChart, {
-      type: 'line',
-      options: {
-        elements: {
-            point:{
-                radius: 0.2
-            }
-        }
-      },
-        data: {
-            labels: arrayOftimeAxispoints,
-            datasets: [firstUser, secondUser, thirdUser]
-        }
-    });
-
-    document.querySelector('#backtoTable').addEventListener('click', () => {
-        myLineChart.destroy()
-        document.getElementById('showTable').style.display = 'block'
-        document.getElementById('modalHeader').style.display = 'block'
-        document.getElementById('showDetails').style.display = 'none'
-
-        document.querySelector('.modalDisplay').classList.remove('modal-fullscreen')
-        document.querySelector('.modalDisplay').classList.add('modal-xl')
-    })
-
-    document.querySelector('.fullscreenButton').addEventListener('click', () =>{
-        document.querySelector('.modalDisplay').classList.remove('modal-xl')
-        document.querySelector('.modalDisplay').classList.add('modal-fullscreen')
-        document.getElementById('myChart').style.width = '96%'
-        document.getElementById('myChart').style.height = '96%'
-    })
-    
-}
