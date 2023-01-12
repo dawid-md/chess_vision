@@ -257,16 +257,26 @@ function drawChart(currentUser, allUsers){
         document.getElementById('showTable').style.display = 'block'
         document.getElementById('modalHeader').style.display = 'block'
         document.getElementById('showDetails').style.display = 'none'
+        document.querySelector('.modalDisplay').classList.remove('modal-fullscreen')
+        document.querySelector('.modalDisplay').classList.add('modal-xl')
+        document.querySelector('.fullscreenButton').style.display = 'block'
+    })
 
+    document.querySelector('#closeChart').addEventListener('click', () => {
+        myLineChart.destroy()
+        document.getElementById('showTable').style.display = 'block'
+        document.getElementById('modalHeader').style.display = 'block'
+        document.getElementById('showDetails').style.display = 'none'
         document.querySelector('.modalDisplay').classList.remove('modal-fullscreen')
         document.querySelector('.modalDisplay').classList.add('modal-xl')
     })
 
-    document.querySelector('.fullscreenButton').addEventListener('click', () =>{
+    document.querySelector('.fullscreenButton').addEventListener('click', function(){
         document.querySelector('.modalDisplay').classList.remove('modal-xl')
         document.querySelector('.modalDisplay').classList.add('modal-fullscreen')
         document.getElementById('myChart').style.width = '96%'
         document.getElementById('myChart').style.height = '96%'
+        this.style.display = 'none'
     })
     
 }
@@ -374,6 +384,7 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
                     document.getElementById('showTable').style.display = 'none'
                     document.getElementById('modalHeader').style.display = 'none'
                     document.getElementById('showDetails').style.display = 'block'
+                    document.querySelector('.fullscreenButton').style.display = 'block'
                     drawChart(user, users)
                 })
             cell5.appendChild(button)
