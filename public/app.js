@@ -252,14 +252,15 @@ function drawChart(currentUser, allUsers){
         }
     });
 
-    document.querySelector('#backtoTable').addEventListener('click', () => {
+    document.querySelector('#backtoTable').addEventListener('click', (e) => {
         myLineChart.destroy()
         document.getElementById('showTable').style.display = 'block'
         document.getElementById('modalHeader').style.display = 'block'
         document.getElementById('showDetails').style.display = 'none'
         document.querySelector('.modalDisplay').classList.remove('modal-fullscreen')
         document.querySelector('.modalDisplay').classList.add('modal-xl')
-        document.querySelector('.fullscreenButton').style.display = 'block'
+        document.querySelector('.fullscreenButton').style.display = 'none'
+        e.target.style.display = 'none'
     })
 
     document.querySelector('#closeChart').addEventListener('click', () => {
@@ -337,6 +338,8 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
 
     document.querySelectorAll('.btnTop').forEach(button => button.checked = false)
     document.querySelector('#btnradio3').checked = true
+    document.querySelector('.fullscreenButton').style.display = 'none'
+    document.querySelector('#backtoTable').style.display = 'none'
 
     let users 
     document.getElementById("tableBody").innerHTML = "";
@@ -379,15 +382,17 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
             cell4.innerHTML = (user['date'].toString()).substring(0, 10);
             let button = document.createElement('button')
                 button.innerText = "Details"
-                button.classList.add('btn', 'btn-primary')
+                button.classList.add('btn', 'btn-primary', 'btn-sm')
                 button.addEventListener('click', () => {
                     document.getElementById('showTable').style.display = 'none'
                     document.getElementById('modalHeader').style.display = 'none'
                     document.getElementById('showDetails').style.display = 'block'
                     document.querySelector('.fullscreenButton').style.display = 'block'
+                    document.querySelector('#backtoTable').style.display = 'block'
                     drawChart(user, users)
                 })
             cell5.appendChild(button)
+            document.querySelector('.fullscreenButton').style.display = 'none'
         }
     }
     $('#resultModal').modal('show') 
