@@ -10,6 +10,7 @@ const __dirname = dirname(__filename);
 app.use(express.static('public'));
 
 mongoose.connect('mongodb+srv://dawid-md:admin@cluster0.tcxhaad.mongodb.net/sample_analytics')
+
 const db = mongoose.connection
 db.useDb('results')
 db.on('error', (error) => console.log(error))

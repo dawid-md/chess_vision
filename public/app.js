@@ -416,7 +416,6 @@ window.addEventListener('click', () => {
         document.getElementById('maindiv').style.width = document.getElementById('chessboard').style.width
         document.getElementById('maindiv').style.height = document.getElementById('chessboard').style.width
         document.querySelector('.progress').style.width = (document.getElementById('chessboard').style.width)
-        
         document.querySelector('.coordinatesRow').style.width = (document.getElementById('chessboard').style.width)
         document.querySelector('.coordinatesColumn').style.height = (document.getElementById('chessboard').style.height)
     }
