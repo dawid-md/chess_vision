@@ -12,7 +12,7 @@ html,body{
 #maindiv{
     position: relative; /*gives childs possibility to position absolute relatively to parent, not to browser*/
     float: left;
-    width: 100%;
+    width: 80%;
     max-width: 935px;
     max-height: 935px;
 }
@@ -30,7 +30,7 @@ html,body{
 }
 
 .progress{
-    width: 100%;
+    width: 80%;
     max-width: 935px;
     margin-top: -5px;
 }
@@ -47,7 +47,7 @@ html,body{
 }
 
 .coordinatesRow{
-    /* width: 75%; */
+    width: 80%;
     clear: both;
     display: flex;
     justify-content: space-between;
