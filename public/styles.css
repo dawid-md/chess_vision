@@ -112,60 +112,64 @@ html,body{
     text-shadow: 0px 0px 9px #000000;
   }
 
-  @font-face {
+@font-face {
     font-family: 'digital-7';
     src: url('font/digital-7.ttf');
-  }
+}
 
-  #time-left{
-    font-family: digital-7;
-  }
+#time-left{
+font-family: digital-7;
+}
 
-  #startCard, #stopCard, #startCardMob, #stopCardMob{
-    cursor: pointer;
-  }
+#startCard, #stopCard, #startCardMob, #stopCardMob{
+cursor: pointer;
+}
 
-  #startCard:hover{
-    background-color: #0d6dfde0 !important;
-  }
+#startCard:hover{
+background-color: #0d6dfde0 !important;
+}
 
-  #stopCard, #stopCardMob, #showDetails{
-    display: none;
-  }
+#stopCard, #stopCardMob, #showDetails{
+display: none;
+}
 
-  @keyframes redC {
-    50% {
-        width: 20%;
-        height: 20%;
-        top: 85%;
-        left: 85%;
-        font-size: 40px;
-        opacity: 0.4;
-    }
-    100% {
-        position: absolute;
-        background: #231f12;
-    }
-   }
-    .redcircle {
-        animation-name: redC;
-        animation-duration: 2s;
-        position: absolute;
-        width: 15px;
-        height: 15px;
-        background: #ffc107;
-        border-radius: 50%;
-        top: 99%;
-        left: 99%;
-        font-size: 1px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-direction: column;
-        opacity: 0.5;
-    }
-    .redcircle:first-child{
-        color: rgb(255, 255, 255);
-        padding-top: 2%;
-    }
+@keyframes redC {
+50% {
+    width: 20%;
+    height: 20%;
+    top: 85%;
+    left: 85%;
+    font-size: 40px;
+    opacity: 0.4;
+}
+100% {
+    position: absolute;
+    background: #231f12;
+}
+}
+.redcircle {
+    animation-name: redC;
+    animation-duration: 2s;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ffc107;
+    border-radius: 50%;
+    top: 99%;
+    left: 99%;
+    font-size: 1px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    opacity: 0.5;
+}
+.redcircle:first-child{
+    color: rgb(255, 255, 255);
+    padding-top: 2%;
+}
+
+#btncheck3:hover{
+    color: #ffc107 !important;
+}
