@@ -17,6 +17,12 @@ html,body{
     max-height: 935px;
 }
 
+@media screen and (max-width: 1920px) {
+    #maindiv {
+      width: 100%;
+    }
+}
+
 #chessboard {
     aspect-ratio:1/1;
     display: flex;
