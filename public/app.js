@@ -102,6 +102,7 @@ function countDown(gameTime){
                 document.querySelector('#chessboard').style.resize = 'both'
                 resizeable = true
                 document.querySelectorAll('.btn-outline-warning').forEach(buttonElement => buttonElement.classList.remove('disabled'))
+                document.querySelector('.diagonalArrow').style.display = 'block'
                 resolve(score)
             }
             currentTime -= 0.1
@@ -119,6 +120,7 @@ function countDown(gameTime){
             document.querySelector('#chessboard').style.resize = 'both'
             resizeable = true
             document.querySelectorAll('.btn-outline-warning').forEach(buttonElement => buttonElement.classList.remove('disabled'))
+            document.querySelector('.diagonalArrow').style.display = 'block'
         })
 
         stopCardMob.addEventListener('click', () => {
@@ -134,6 +136,7 @@ function countDown(gameTime){
             document.querySelector('#chessboard').style.resize = 'both'
             resizeable = true
             document.querySelectorAll('.btn-outline-warning').forEach(buttonElement => buttonElement.classList.remove('disabled'))
+            document.querySelector('.diagonalArrow').style.display = 'block'
         })
     })
 }
@@ -142,6 +145,7 @@ function game(){
     isGameRunning = true
     score = 0
     document.querySelectorAll('.btn-outline-warning').forEach(buttonElement => buttonElement.classList.add('disabled'))
+    document.querySelector('.diagonalArrow').style.display = 'none'
     setTarget(coordinates)
     countDown(gameTime)
         .then((score) => {
@@ -150,6 +154,7 @@ function game(){
             stopCard.style.display = 'none'
             startCardMob.style.display = 'block'
             stopCardMob.style.display = 'none'
+
             $('#exampleModal').modal('show');
             document.getElementById('#userscore').textContent = score
         })
@@ -459,7 +464,7 @@ timeSelectors.forEach(button => {
     })
 })
 
-setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 2000)
+//setTimeout(() => {document.querySelector('.redcircle').style.display = 'none'}, 2000)
 
 document.querySelector('.mainField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 3.533) + 'px'
 document.querySelector('.nextField').style.fontSize = (document.getElementById('chessboard').offsetWidth / 8.34) + 'px'

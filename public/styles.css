@@ -21,6 +21,9 @@ html,body{
     #maindiv {
       width: 100%;
     }
+    .diagonalArrow{
+      display: none;
+    }
 }
 
 #chessboard {
@@ -92,7 +95,7 @@ html,body{
     font-size: 87px;
     opacity: 0.9;
     pointer-events:none;
-    text-shadow: 0px 0px 9px #000000;
+    text-shadow: 0px 0px 16px #000000;
 }
 .mainField{
     color: rgb(255, 255, 255);
@@ -103,7 +106,7 @@ html,body{
     top: 23%;
     transition: 0.1s;
     pointer-events:none;
-    text-shadow: 0px 0px 9px #000000;
+    text-shadow: 0px 0px 16px #000000;
     opacity: 0.8;
 }
 .fadeLeft{
@@ -139,43 +142,70 @@ background-color: #0d6dfde0 !important;
 display: none;
 }
 
-@keyframes redC {
-50% {
-    width: 20%;
-    height: 20%;
-    top: 85%;
-    left: 85%;
-    font-size: 40px;
-    opacity: 0.4;
-}
-100% {
-    position: absolute;
-    background: #231f12;
-}
-}
-.redcircle {
-    animation-name: redC;
-    animation-duration: 2s;
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: #ffc107;
-    border-radius: 50%;
-    top: 99%;
-    left: 99%;
-    font-size: 1px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    opacity: 0.5;
-}
-.redcircle:first-child{
-    color: rgb(255, 255, 255);
-    padding-top: 2%;
-}
-
 #btncheck3:hover{
     color: #ffc107 !important;
 }
+
+.diagonalArrow {
+    position: absolute;
+    top: 99%;
+    left: 99%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border-top: 6px solid transparent;
+    border-right: 6px solid #8800ff;
+    border-bottom: 6px solid #8800ff;
+    border-left: 6px solid transparent; 
+    transform-origin: 0% 0%;
+    animation: arrow-animation 1.7s ease-in-out infinite;
+  }
+  
+  @keyframes arrow-animation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* @keyframes redC {
+    50% {
+        width: 20%;
+        height: 20%;
+        top: 85%;
+        left: 85%;
+        font-size: 40px;
+        opacity: 0.4;
+    }
+    100% {
+        position: absolute;
+        background: #231f12;
+    }
+    }
+    .redcircle {
+        animation-name: redC;
+        animation-duration: 2s;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: #ffc107;
+        border-radius: 50%;
+        top: 99%;
+        left: 99%;
+        font-size: 1px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+        opacity: 0.5;
+    }
+    .redcircle:first-child{
+        color: rgb(255, 255, 255);
+        padding-top: 2%;
+    } */
