@@ -31,7 +31,7 @@ function drawChessboard() {
         square.addEventListener('click', (e) => {
             if(isGameRunning){
                 selectedSquare = e.target.id
-                checkSquare(targetSquare, selectedSquare)
+                checkSquare(targetSquare, selectedSquare, e.target)
                 setTarget(squares)
             }   
         })
@@ -75,10 +75,12 @@ function setTarget(squares) {
 
 }
 
-function checkSquare(targetSquare, selectedSquare) {
+function checkSquare(targetSquare, selectedSquare, target) {
     if(targetSquare == selectedSquare){
         document.querySelector('#score').textContent = score += 1
         realSegments[score] = currentTime.toFixed(2)
+        // target.style.border = "3px solid #0d6efd"
+        // setTimeout(() => {target.style.border = "none"}, 200)
     }
     else {
         document.querySelector('.mainField').style.color = "red"

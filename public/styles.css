@@ -22,7 +22,7 @@ html,body{
       width: 100%;
     }
     .diagonalArrow{
-      display: none;
+      display: none !important;
     }
 }
 
