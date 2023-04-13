@@ -388,7 +388,7 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
             cell3.innerHTML = user['score']
             cell4.innerHTML = (user['date'].toString()).substring(0, 10);
             let button = document.createElement('button')
-                button.innerText = "Details"
+                button.innerText = "Chart"
                 button.classList.add('btn', 'btn-primary', 'btn-sm')
                 button.addEventListener('click', () => {
                     document.getElementById('showTable').style.display = 'none'
