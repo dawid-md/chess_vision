@@ -22,4 +22,4 @@ app.use(router)     //(routes, router)
 app.set('view engine', 'hbs')
 //app.set('views', (__dirname + '/public'));
 
-app.listen(3000, () => console.log('..................'))
+app.listen(3000, () => console.log('....................'))

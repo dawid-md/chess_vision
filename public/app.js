@@ -374,7 +374,7 @@ document.querySelectorAll('.nav-link')[1].addEventListener('click', () => {
             })
         })
     
-    function fillTable(user, selectedTime = 15) {   //selectedTime default value
+    function fillTable(user, selectedTime = 15) {   //selectedTime default value //git add
         if(user['timer'] == selectedTime) {
             let table = document.getElementById("tableBody");
             let row = table.insertRow(-1);
