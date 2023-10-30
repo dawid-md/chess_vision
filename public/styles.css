@@ -135,11 +135,15 @@ cursor: pointer;
 }
 
 #startCard:hover{
-background-color: #0d6dfde0 !important;
+background-color: #0053cee0 !important;
 }
 
 #stopCard, #stopCardMob, #showDetails{
 display: none;
+}
+
+#stopCard:hover{
+background-color: #181818 !important;
 }
 
 #btncheck3:hover{
